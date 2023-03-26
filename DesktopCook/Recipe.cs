@@ -30,7 +30,7 @@ namespace DesktopCook
         public Nullable<int> IdCategory { get; set; }
         public Nullable<int> IdMeal { get; set; }
 
-        public Recipe(string NameRecipe, string Ingredient, string Description, byte[] ImageRecipe, int IdCategory, int IdMeal, int IdUser)
+        public Recipe(string NameRecipe, string Ingredient, string Description, byte[] ImageRecipe, int IdCategory, int IdMeal, int IdUser, bool Moder)
         {
             this.NameRecipe = NameRecipe;
             this.Ingredient = Ingredient;
@@ -39,6 +39,7 @@ namespace DesktopCook
             this.IdCategory = IdCategory;
             this.IdMeal = IdMeal;
             this.IdUser = IdUser;
+            this.Moder = Moder;
         }
 
         public virtual Category Category { get; set; }

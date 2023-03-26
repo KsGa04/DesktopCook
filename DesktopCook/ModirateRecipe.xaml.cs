@@ -65,5 +65,33 @@ namespace DesktopCook
             listRecipe.Show();
             this.Hide();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+                using (CookingBookEntities db = new CookingBookEntities())
+                {
+                Recipe recipe = db.Recipe.FirstOrDefault(x => x.IdRecipe == _recipe);
+                recipe.NameRecipe = Name.Text;
+                recipe.Description = Desc.Text;
+                recipe.Ingredient = Ingr.Text;
+                recipe.Moder = true;
+                    db.SaveChanges();
+                }
+                MessageBox.Show("Запись обновлена");
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Recipe recipe = db.Recipe.FirstOrDefault(x => x.IdRecipe == _recipe);
+                recipe.NameRecipe = Name.Text;
+                recipe.Description = Desc.Text;
+                recipe.Ingredient = Ingr.Text;
+                recipe.Moder = false;
+                db.SaveChanges();
+            }
+            MessageBox.Show("Запись обновлена");
+        }
     }
 }

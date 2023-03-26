@@ -72,7 +72,7 @@ namespace DesktopCook
         {
             if (ListRecipe.SelectedIndex >= 0)
             {
-                var result = MessageBox.Show("Вы точно хотите удалить этого сотрудника?", "Удалить", MessageBoxButton.YesNo);
+                var result = MessageBox.Show("Вы точно хотите удалить этот рецепт?", "Удалить", MessageBoxButton.YesNo);
 
                 if (result == MessageBoxResult.Yes)
                 {
@@ -99,6 +99,18 @@ namespace DesktopCook
             _recipe = _context.Recipe.ToList();
             _recipe = _recipe.Where(x => x.IdUser == id).ToList();
             ListRecipe.ItemsSource = _recipe;
+        }
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            if (sender is ListViewItem item)
+            {
+                var product = item.Content as Recipe;
+                int id = product.IdRecipe;
+                UpdateMyRecipe allMeals = new UpdateMyRecipe(_user, id);
+                allMeals.Show();
+                this.Hide();
+
+            }
         }
     }
 }

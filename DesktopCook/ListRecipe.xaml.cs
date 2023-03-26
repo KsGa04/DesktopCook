@@ -30,7 +30,7 @@ namespace DesktopCook
             InitializeComponent();
             LstRecipe.Items.Clear();
             _recipe = _context.Recipe.ToList();
-            _recipe = _recipe.Where(x => x.IdCategory == id).ToList();
+            _recipe = _recipe.Where(x => x.IdCategory == id && x.Moder == false).ToList();
             LstRecipe.ItemsSource = _recipe;
         }
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -57,6 +57,13 @@ namespace DesktopCook
                 allMeals.Show();
                 this.Hide();
             }
+        }
+
+        private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        {
+            ListRecipe recipe = new ListRecipe(_moderator);
+            recipe.Show();
+            this.Hide();
         }
     }
 }

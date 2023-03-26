@@ -55,7 +55,8 @@
                             </Grid.RowDefinitions>
                             <Image Grid.Row="0" Source="{Binding ImageRecipe}" HorizontalAlignment="Center"></Image>
                             <TextBlock Grid.Row="1" Text="{Binding NameRecipe}" HorizontalAlignment="Center" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" x:Name="Name_category"></TextBlock>
-
+                            <TextBlock Grid.Row="2" Text="Модерация" HorizontalAlignment="Left" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center" x:Name="Moder"/>
+                            <TextBlock Grid.Row="2" Text="{Binding Moder}" HorizontalAlignment="Right" FontSize="20" TextWrapping="Wrap" TextAlignment="Center" VerticalAlignment="Center"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

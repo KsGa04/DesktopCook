@@ -145,6 +145,9 @@
     <Compile Include="SpecificMeal.xaml.cs">
       <DependentUpon>SpecificMeal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateMyRecipe.xaml.cs">
+      <DependentUpon>UpdateMyRecipe.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -263,6 +266,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SpecificMeal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateMyRecipe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

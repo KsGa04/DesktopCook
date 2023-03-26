@@ -46,7 +46,8 @@
             <TextBlock x:Name="Ingr" Grid.Row="0" Margin="29,232,34,10" TextWrapping="Wrap"></TextBlock>
             <TextBlock x:Name="Name" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2" Margin="341,26,0,0" TextWrapping="Wrap" Width="332"/>
             <TextBlock x:Name="Desc" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,87,0,0" Height="417" Width="321" Grid.Column="1" FontSize="16" TextWrapping="Wrap"/>
-            <Button Content="Одобрить" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#ffde89" FontSize="16" Width="113" Height="36"/>
+            <Button Content="Одобрить" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#ffde89" FontSize="16" Width="113" Height="36" Click="Button_Click_1" Margin="100"/>
+            <Button Content="Не одобрять" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#ffde89" FontSize="16" Width="113" Height="36" Click="Button_Click_2"/>
         </Grid>
     </Grid>
 </Window>

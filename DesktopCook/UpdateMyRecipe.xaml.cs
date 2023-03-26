@@ -17,58 +17,71 @@ using System.Windows.Shapes;
 namespace DesktopCook
 {
     /// <summary>
-    /// Логика взаимодействия для AddRecipe.xaml
+    /// Логика взаимодействия для UpdateMyRecipe.xaml
     /// </summary>
-    public partial class AddRecipe : Window
+    public partial class UpdateMyRecipe : Window
     {
-        private CookingBookEntities _db = new CookingBookEntities();
+        private CookingBookEntities _context = new CookingBookEntities();
+        private List<Recipe> _recipe = new List<Recipe>();
         private byte[] _image;
-        private Users _users;
-        private int id;
-        public AddRecipe(Users user)
+        private Users _user;
+        private int _id;
+        private int _userId;
+        public UpdateMyRecipe(Users users, int id)
         {
             InitializeComponent();
-            _users = user;
-
-            foreach (var d in _db.Category)
-            {
-                Categ.Items.Add(d.NameCategory);
-            }
-            foreach (var i in _db.Meal)
-            {
-                Dish.Items.Add(i.NameMeal);
-            }
+            _user = users;
+            _id = id;
+            FillImageBox();
         }
-
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Glavnay glavnay = new Glavnay(_users);
+            Glavnay glavnay = new Glavnay(_user);
             glavnay.Show();
             this.Hide();
         }
 
         private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
         {
-            PrivateAccount privateAccount = new PrivateAccount(_users);
+            PrivateAccount privateAccount = new PrivateAccount(_user);
             privateAccount.Show();
             this.Hide();
         }
 
         private void TextBlock_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
         {
-            Catalog catalogue = new Catalog(_users);
+            Catalog catalogue = new Catalog(_user);
             catalogue.Show();
             this.Hide();
         }
 
         private void TextBlock_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
         {
-            MyRecipes myRecipes = new MyRecipes(_users);
+            MyRecipes myRecipes = new MyRecipes(_user);
             myRecipes.Show();
             this.Hide();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            Authorization authorization = new Authorization();
+            authorization.Show();
+            this.Hide();
+        }
+        private void FillImageBox()
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Recipe recipe = db.Recipe.FirstOrDefault(x => x.IdRecipe == _id);
+                _image = recipe.ImageRecipe;
+                MemoryStream ms = new MemoryStream(_image);
+                ImageAccount.Source = BitmapFrame.Create(ms, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+                Name.Text = recipe.NameRecipe;
+                Desc.Text = recipe.Description;
+                Ingr.Text = recipe.Ingredient;
+            }
+        }
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             string path;
@@ -83,26 +96,17 @@ namespace DesktopCook
             MemoryStream ms = new MemoryStream(_image);
             ImageAccount.Source = BitmapFrame.Create(ms, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            Authorization authorization = new Authorization();
-            authorization.Show();
-            this.Hide();
-        }
-
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            id = _users.IdUser;
+            _userId = _user.IdUser;
             if ((Name.Text != "") && (Desc.Text != "") && (Categ.SelectedItem != null) && (Dish.SelectedItem != null))
             {
                 using (CookingBookEntities db = new CookingBookEntities())
                 {
-                    Recipe recipe = new Recipe(Name.Text, Ingr.Text, Desc.Text, _image, Convert.ToInt32(Categ.SelectedIndex + 1), Convert.ToInt32(Dish.SelectedIndex + 1), id, false);
-                    db.Recipe.Add(recipe);
+                    Recipe recipe = new Recipe(Name.Text, Ingr.Text, Desc.Text, _image, Convert.ToInt32(Categ.SelectedIndex + 1), Convert.ToInt32(Dish.SelectedIndex + 1), _userId, false);
                     db.SaveChanges();
                 }
-                MessageBox.Show("Запись добавлена");
+                MessageBox.Show("Запись обновлена");
             }
         }
     }
