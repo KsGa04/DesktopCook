@@ -1,0 +1,52 @@
+﻿<Window x:Class="DesktopCook.Authorization"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopCook"
+        mc:Ignorable="d"
+        Title="Authorization" Height="620" Width="1040" MinHeight="620" MaxHeight="620" MinWidth="1024" MaxWidth="1040">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Добро пожаловать на Кухню!" FontSize="36" FontWeight="Bold" Foreground="#ff7800" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Source="https://i.pinimg.com/564x/05/16/15/051615b7094c4665bf943e3120c60390.jpg" Height="343" Grid.Column="0"/>
+            <Border BorderBrush="#ff7a00" BorderThickness="2" Grid.Column="1" Margin="35">
+                <Grid Background="#ffd482">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="60"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Авторизация" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Grid.Row="0"></TextBlock>
+                    <!--    <TextBlock Text="Администратор" Grid.Row="0" HorizontalAlignment="Right" VerticalAlignment="Bottom" FontSize="13" FontWeight="Bold" Foreground="#9d5500" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_2"></TextBlock> -->
+                    <TextBlock Text="Почта" Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="13" Margin="10,0"></TextBlock>
+                    <TextBox x:Name="textboxLog" Width="239" Height="35" FontSize="13" Margin="10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1"></TextBox>
+                    <TextBlock Text="Пароль" Grid.Row="2" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="13" Margin="10,0"></TextBlock>
+                    <PasswordBox x:Name="textboxPass" Width="239" Height="35" FontSize="13" Margin="10" Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1"></PasswordBox>
+                    <TextBlock Text="Роли" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Left" FontSize="13" Margin="10,0"></TextBlock>
+                    <ComboBox x:Name="role" Width="239" Height="35" FontSize="13" Margin="10" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1">
+                        <TextBlock Text="Пользователь"/>
+                        <TextBlock Text="Модератор"/>
+                        <TextBlock Text="Администратор"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Регистрация" FontSize="13" FontWeight="Bold" Foreground="#9d5500" HorizontalAlignment="Left" VerticalAlignment="Bottom" Grid.Row="4" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"></TextBlock>
+                    <TextBlock Text="Восстановление пароля" FontSize="13" FontWeight="Bold" Foreground="#9d5500" HorizontalAlignment="Right" VerticalAlignment="Bottom" Grid.Row="4" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1"></TextBlock>
+                    <Button BorderBrush="Black" BorderThickness="1" Background="#ffe6a5" Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Width="109" Height="35" FontSize="13" Click="Button_Click">Войти</Button>
+
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

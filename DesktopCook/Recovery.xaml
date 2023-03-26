@@ -1,0 +1,36 @@
+﻿<Window x:Class="DesktopCook.Recovery"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopCook"
+        mc:Ignorable="d"
+        Title="Recovery" Height="620" Width="1040" MinHeight="620" MaxHeight="620" MinWidth="1024" MaxWidth="1040">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="180"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Text="Добро пожаловать на Кухню!" FontSize="36" FontWeight="Bold" Foreground="#ff7800" HorizontalAlignment="Center" VerticalAlignment="Center"></TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Image Source="https://i.pinimg.com/564x/c6/77/87/c677870bc55dcfc8a262138edbdb2ba0.jpg" Height="343" Grid.Column="0"/>
+            <Border BorderBrush="#ff7a00" BorderThickness="2" Grid.Column="1" Margin="60">
+                <Grid Background="#ffd482">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="80"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Text="Восстановление пароля" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Grid.Row="0"></TextBlock>
+                    <TextBlock Text="Введите почту для отправки восстановления пароля" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Margin="10"></TextBlock>
+                    <TextBox x:Name="textboxMail" Text="Почта" Width="239" Height="35" FontSize="13" Margin="10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1"></TextBox>
+                    <Button BorderBrush="Black" BorderThickness="1" Background="#ffe6a5" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="130" Height="35" FontSize="13" Click="Button_Click">Отправить</Button>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
