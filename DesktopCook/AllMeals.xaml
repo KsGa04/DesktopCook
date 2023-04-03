@@ -40,11 +40,11 @@
                     <ColumnDefinition Width="213"></ColumnDefinition>
                     <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"></TextBlock>
-                <TextBlock Grid.Column="1" Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1">Личный кабинет</TextBlock>
-                <TextBlock Grid.Column="2" Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_2">Каталог блюд</TextBlock>
-                <TextBlock Grid.Column="3"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_3">Мои рецепты</TextBlock>
-                <Button Grid.Column="5" Content="Выйти" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Button_Click"/>
+                <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" MouseLeftButtonDown="Main_MouseLeftButtonDown"></TextBlock>
+                <TextBlock Grid.Column="1" Style="{StaticResource header}" MouseLeftButtonDown="PrivateAccount_MouseLeftButtonDown">Личный кабинет</TextBlock>
+                <TextBlock Grid.Column="2" Style="{StaticResource header}" MouseLeftButtonDown="Catalog_MouseLeftButtonDown">Каталог блюд</TextBlock>
+                <TextBlock Grid.Column="3"  Style="{StaticResource header}" MouseLeftButtonDown="MyRecipes_MouseLeftButtonDown">Мои рецепты</TextBlock>
+                <Button Grid.Column="5" Content="Выйти" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Authorization_Click"/>
             </Grid>
         </Border>
         <Label Content="Блюда" FontSize="26" Margin="60,0" Grid.Row="1"></Label>

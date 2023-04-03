@@ -69,7 +69,7 @@
                     <TextBox x:Name="textboxLog" Grid.Row="1"/>
                     <TextBlock Text="Пароль" Grid.Row="2" Style="{StaticResource main}"></TextBlock>
                     <PasswordBox x:Name="textboxPass" Grid.Row="2"/>
-                    <Button Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click">Зарегистрироваться</Button>
+                    <Button Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Registration_Click">Зарегистрироваться</Button>
                 </Grid>
             </Border>
         </Grid>

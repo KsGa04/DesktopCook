@@ -24,21 +24,21 @@ namespace DesktopCook
             InitializeComponent();
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Registration_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Registration registration = new Registration();
             registration.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        private void Recovery_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Recovery recovery = new Recovery();
             recovery.Show();
             this.Hide();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             using (CookingBookEntities db = new CookingBookEntities())
             {

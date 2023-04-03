@@ -36,11 +36,11 @@
                     <ColumnDefinition Width="213"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_3"></TextBlock>
-                <TextBlock Grid.Column="1"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_2">Личный кабинет</TextBlock>
-                <TextBlock Grid.Column="2"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1">Каталог блюд</TextBlock>
-                <TextBlock Grid.Column="3"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown">Мои рецепты</TextBlock>
-                <Button Grid.Column="5" Content="Выйти" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Button_Click"/>
+                <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" MouseLeftButtonDown="Main_MouseLeftButtonDown"></TextBlock>
+                <TextBlock Grid.Column="1"  Style="{StaticResource header}" MouseLeftButtonDown="PrivateAccount_MouseLeftButtonDown">Личный кабинет</TextBlock>
+                <TextBlock Grid.Column="2"  Style="{StaticResource header}" MouseLeftButtonDown="Catalogue_MouseLeftButtonDown">Каталог блюд</TextBlock>
+                <TextBlock Grid.Column="3"  Style="{StaticResource header}" MouseLeftButtonDown="MyRecipes_MouseLeftButtonDown">Мои рецепты</TextBlock>
+                <Button Grid.Column="5" Content="Выйти" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Authorization_Click"/>
             </Grid>
         </Border>
         <Grid Grid.Row="1">
@@ -52,7 +52,7 @@
             <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Width="278" Height="278" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,26,0,0">
                 <Image x:Name="ImageMeals"/>
             </Border>
-            <Button Content="Добавить рецепт" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,457,0,0" Click="Button_Click_1"/>
+            <Button Content="Добавить рецепт" HorizontalAlignment="Center" VerticalAlignment="Top" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,457,0,0" Click="AddRecipe_Click"/>
             <TextBlock x:Name="Name" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2" Margin="341,26,0,0" TextWrapping="Wrap" Width="332"/>
             <TextBlock x:Name="Desc" TextWrapping="Wrap" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,87,0,0" Height="348" Width="340" Grid.Column="1" FontSize="16"/>
             <TextBlock Grid.Column="2" Text="Рецепты" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,26,0,0"/>

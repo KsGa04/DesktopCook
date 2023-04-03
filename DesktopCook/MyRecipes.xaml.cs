@@ -33,42 +33,42 @@ namespace DesktopCook
             _recipe = _recipe.Where(x => x.IdUser == id).ToList();
             ListRecipe.ItemsSource = _recipe;
         }
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Main_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Glavnay glavnay = new Glavnay(_user);
             glavnay.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        private void PrivateAccount_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             PrivateAccount privateAccount = new PrivateAccount(_user);
             privateAccount.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
+        private void Catalogue_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Catalog catalogue = new Catalog(_user);
             catalogue.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
+        private void MyRecipes_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MyRecipes myRecipes = new MyRecipes(_user);
             myRecipes.Show();
             this.Hide();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             Authorization authorization = new Authorization();
             authorization.Show();
             this.Hide();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void RemoveRecipe_Click(object sender, RoutedEventArgs e)
         {
             if (ListRecipe.SelectedIndex >= 0)
             {

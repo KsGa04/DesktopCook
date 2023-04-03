@@ -40,35 +40,35 @@ namespace DesktopCook
             }
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void Main_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Glavnay glavnay = new Glavnay(_users);
             glavnay.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        private void PrivateAccount_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             PrivateAccount privateAccount = new PrivateAccount(_users);
             privateAccount.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
+        private void Catalog_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Catalog catalogue = new Catalog(_users);
             catalogue.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
+        private void MyRecipes_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MyRecipes myRecipes = new MyRecipes(_users);
             myRecipes.Show();
             this.Hide();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Choose_A_Photo_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             string path;
@@ -76,22 +76,19 @@ namespace DesktopCook
             {
                 path = openFileDialog.FileName;
                 _image = System.IO.File.ReadAllBytes(path);
-
-                //_db.Users.Add(new Users() { DateOfBirth = Convert.ToDateTime("12.04.1997"), ImageUser = image, Mail = "test", NikName = "test", Password = "test" });
-                //_db.SaveChanges();
             }
             MemoryStream ms = new MemoryStream(_image);
             ImageAccount.Source = BitmapFrame.Create(ms, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             Authorization authorization = new Authorization();
             authorization.Show();
             this.Hide();
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void AddRecipe_Click(object sender, RoutedEventArgs e)
         {
             id = _users.IdUser;
             if ((Name.Text != "") && (Desc.Text != "") && (Categ.SelectedItem != null) && (Dish.SelectedItem != null))

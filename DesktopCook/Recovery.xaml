@@ -38,7 +38,7 @@
                     <TextBlock Text="Восстановление пароля" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Grid.Row="0"></TextBlock>
                     <TextBlock Text="Введите почту для отправки восстановления пароля" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Margin="10"></TextBlock>
                     <TextBox x:Name="textboxMail" Text="Почта" Width="239" Height="35" FontSize="13" Margin="10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1"></TextBox>
-                    <Button Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click">Отправить</Button>
+                    <Button Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Recovery_Click">Отправить</Button>
                 </Grid>
             </Border>
         </Grid>

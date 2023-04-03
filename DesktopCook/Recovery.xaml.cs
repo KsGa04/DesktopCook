@@ -25,7 +25,7 @@ namespace DesktopCook
         {
             InitializeComponent();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Recovery_Click(object sender, RoutedEventArgs e)
         {
             try
             {

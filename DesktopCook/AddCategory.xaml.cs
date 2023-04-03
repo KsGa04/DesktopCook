@@ -39,42 +39,42 @@ namespace DesktopCook
             }
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void AddMeals_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AddMeals addMeals = new AddMeals();
             addMeals.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        private void AddCategory_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AddCategory addCategory = new AddCategory();
             addCategory.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
+        private void AddWorker_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AddWorker addWorker = new AddWorker();
             addWorker.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
+        private void AllModerator_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AllModerator allModerator = new AllModerator();
             allModerator.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown_4(object sender, MouseButtonEventArgs e)
+        private void Authorization_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Authorization authorization = new Authorization();
             authorization.Show();
             this.Hide();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void ChoosePhoto_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
             string path;
@@ -87,7 +87,7 @@ namespace DesktopCook
             ImageAccount.Source = BitmapFrame.Create(ms, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void AddCategory_Click(object sender, RoutedEventArgs e)
         {
             using (CookingBookEntities db = new CookingBookEntities())
             {
@@ -105,7 +105,7 @@ namespace DesktopCook
             }
         }
 
-        private void Button_Click_2(object sender, RoutedEventArgs e)
+        private void RemoveCategory_Click(object sender, RoutedEventArgs e)
         {
             if (Categ.SelectedIndex >= 0)
             {

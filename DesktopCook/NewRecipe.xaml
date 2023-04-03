@@ -36,11 +36,11 @@
                     <ColumnDefinition Width="213"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"></TextBlock>
-                <TextBlock Grid.Column="1"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1">Личный кабинет</TextBlock>
-                <TextBlock Grid.Column="2"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_2">Каталог блюд</TextBlock>
-                <TextBlock Grid.Column="3"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_3">Мои рецепты</TextBlock>
-                <Button Grid.Column="5" Content="Выйти" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Button_Click"/>
+                <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" MouseLeftButtonDown="Main_MouseLeftButtonDown"></TextBlock>
+                <TextBlock Grid.Column="1"  Style="{StaticResource header}" MouseLeftButtonDown="PrivateAccount_MouseLeftButtonDown">Личный кабинет</TextBlock>
+                <TextBlock Grid.Column="2"  Style="{StaticResource header}" MouseLeftButtonDown="Catalogue_MouseLeftButtonDown">Каталог блюд</TextBlock>
+                <TextBlock Grid.Column="3"  Style="{StaticResource header}" MouseLeftButtonDown="MyRecipes_MouseLeftButtonDown">Мои рецепты</TextBlock>
+                <Button Grid.Column="5" Content="Выйти" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Authorization_Click"/>
             </Grid>
         </Border>
         <Grid Grid.Row="1">
@@ -56,7 +56,7 @@
             <TextBlock x:Name="Name" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2" Margin="341,26,0,0" TextWrapping="Wrap" Width="332"/>
             <TextBlock x:Name="Desc" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,87,0,0" Height="417" Width="321" Grid.Column="1" FontSize="16" TextWrapping="Wrap"/>
             <TextBlock Grid.Column="2" Text="Комментарии" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,26,0,0"/>
-            <TextBox Text="Оставьте комментарий" Grid.Column="2" Height="99" VerticalAlignment="Top" Margin="0,67,0,0" KeyDown="TextBox_KeyDown" TextWrapping="Wrap" x:Name="NameCom"/>
+            <TextBox Text="Оставьте комментарий" Grid.Column="2" Height="99" VerticalAlignment="Top" Margin="0,67,0,0" KeyDown="Comment_KeyDown" TextWrapping="Wrap" x:Name="NameCom"/>
             <ListView x:Name="ListComment" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}" Width="330" Margin="341,200,12,0" Grid.ColumnSpan="2">
                 <ListView.ItemsPanel>
                     <ItemsPanelTemplate>

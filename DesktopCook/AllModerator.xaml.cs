@@ -36,42 +36,42 @@ namespace DesktopCook
             }
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void AddCategory_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AddCategory addCategory = new AddCategory();
             addCategory.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        private void AddMeals_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AddMeals addMeals = new AddMeals();
             addMeals.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown_2(object sender, MouseButtonEventArgs e)
+        private void AddWorker_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AddWorker addWorker = new AddWorker();
             addWorker.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown_3(object sender, MouseButtonEventArgs e)
+        private void AllModerators_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AllModerator allModerator = new AllModerator();
             allModerator.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown_4(object sender, MouseButtonEventArgs e)
+        private void Authorization_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Authorization authorization = new Authorization();
             authorization.Show();
             this.Hide();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void RemoveModerator_Click(object sender, RoutedEventArgs e)
         {
             if (Moder.SelectedIndex >= 0)
             {

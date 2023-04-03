@@ -27,29 +27,27 @@ namespace DesktopCook
             InitializeComponent();
             _moderator = moderator;
             id = moderator.IdModerator;
-
-            //FillImageBox();
             Nikname.Text = _moderator.NikName;
             DateBirth.Text = _moderator.DateOfBirth.ToString();
             Post.Text = _moderator.Mail;
             Pass.Password = _moderator.Password;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             Authorization authorization = new Authorization();
             authorization.Show();
             this.Hide();
         }
 
-        private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void PrivateAccountModerator_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             PrivateAccountModerator accountModerator = new PrivateAccountModerator(_moderator);
             accountModerator.Show();
             this.Hide();
         }
 
-        private void Button_Click_1(object sender, RoutedEventArgs e)
+        private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
             using (CookingBookEntities db = new CookingBookEntities())
             {
@@ -63,7 +61,7 @@ namespace DesktopCook
             MessageBox.Show("Запись обновлена");
         }
 
-        private void TextBlock_MouseLeftButtonDown_1(object sender, MouseButtonEventArgs e)
+        private void ListRecipe_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             ListRecipe listRecipe = new ListRecipe(_moderator);
             listRecipe.Show();

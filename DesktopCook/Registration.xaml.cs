@@ -23,7 +23,7 @@ namespace DesktopCook
         {
             InitializeComponent();
         }
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Registration_Click(object sender, RoutedEventArgs e)
         {
             if (textboxPass.Password.Length < 8)
             {

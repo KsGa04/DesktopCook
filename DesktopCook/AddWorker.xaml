@@ -49,11 +49,11 @@
                     <ColumnDefinition Width="129"/>
                     <ColumnDefinition Width="129"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_4"></TextBlock>
-                <TextBlock Grid.Column="1"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" TextAlignment="Center">Добавить <LineBreak/> Категорию</TextBlock>
-                <TextBlock Grid.Column="2" Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" TextAlignment="Center">Добавить <LineBreak/> Блюдо</TextBlock>
-                <TextBlock Grid.Column="3"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_2" TextAlignment="Center">Добавить <LineBreak/> Модератора</TextBlock>
-                <TextBlock Grid.Column="4"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_3" TextAlignment="Center">Просмотреть <LineBreak/> Модераторов</TextBlock>
+                <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" MouseLeftButtonDown="Authorization_MouseLeftButtonDown"></TextBlock>
+                <TextBlock Grid.Column="1"  Style="{StaticResource header}" MouseLeftButtonDown="AddCategory_MouseLeftButtonDown" TextAlignment="Center">Добавить <LineBreak/> Категорию</TextBlock>
+                <TextBlock Grid.Column="2" Style="{StaticResource header}" MouseLeftButtonDown="AddMeals_MouseLeftButtonDown" TextAlignment="Center">Добавить <LineBreak/> Блюдо</TextBlock>
+                <TextBlock Grid.Column="3"  Style="{StaticResource header}" MouseLeftButtonDown="AddWorker_MouseLeftButtonDown" TextAlignment="Center">Добавить <LineBreak/> Модератора</TextBlock>
+                <TextBlock Grid.Column="4"  Style="{StaticResource header}" MouseLeftButtonDown="AllModerators_MouseLeftButtonDown" TextAlignment="Center">Просмотреть <LineBreak/> Модераторов</TextBlock>
             </Grid>
         </Border>
         <Label Content="Добавление Модератора" FontSize="24" Grid.Row="1" Width="300"  Height="60" Margin="31,27,693,427"></Label>
@@ -75,12 +75,12 @@
             <TextBlock Text="Никнейм" Grid.Column="0" Grid.Row="2" Style="{StaticResource main}"/>
             <TextBlock Text="Дата Рождения" Grid.Column="2" Grid.Row="0" Style="{StaticResource main}"/>
             <TextBlock Text="Категория блюд" Grid.Column="2" Grid.Row="1" Style="{StaticResource main}"/>
-            <TextBox x:Name="Post" Grid.Column="1" Grid.Row="0" Margin="5"></TextBox>
-            <TextBox x:Name="Pass" Grid.Column="1" Grid.Row="1" Margin="5"></TextBox>
-            <TextBox x:Name="Nik" Grid.Column="1" Grid.Row="2" Margin="5"></TextBox>
-            <TextBox x:Name="Date" Grid.Column="3" Grid.Row="0" Margin="5"></TextBox>
-            <ComboBox x:Name="Categ" Grid.Column="3" Grid.Row="1" Margin="5"></ComboBox>
-            <Button Content="Добавить" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="5" Click="Button_Click"></Button>
+            <TextBox x:Name="Post" Grid.Column="1" Grid.Row="0" Margin="5"/>
+            <TextBox x:Name="Pass" Grid.Column="1" Grid.Row="1" Margin="5"/>
+            <TextBox x:Name="Nik" Grid.Column="1" Grid.Row="2" Margin="5"/>
+            <TextBox x:Name="Date" Grid.Column="3" Grid.Row="0" Margin="5"/>
+            <ComboBox x:Name="Categ" Grid.Column="3" Grid.Row="1" Margin="5"/>
+            <Button Content="Добавить" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="5" Click="AddWorker_Click"/>
         </Grid>
     </Grid>
 </Window>

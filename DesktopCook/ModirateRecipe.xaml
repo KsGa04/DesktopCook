@@ -46,9 +46,9 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" ></TextBlock>
-                <TextBlock Grid.Column="1"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown">Личный кабинет</TextBlock>
-                <TextBlock Grid.Column="2" Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1">Список рецептов</TextBlock>
-                <Button Grid.Column="5" Content="Выйти" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Button_Click"/>
+                <TextBlock Grid.Column="1"  Style="{StaticResource header}" MouseLeftButtonDown="PrivateAccountModerator_MouseLeftButtonDown">Личный кабинет</TextBlock>
+                <TextBlock Grid.Column="2" Style="{StaticResource header}" MouseLeftButtonDown="ListRecipes_MouseLeftButtonDown">Список рецептов</TextBlock>
+                <Button Grid.Column="5" Content="Выйти" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Authorization_Click"/>
             </Grid>
         </Border>
         <Grid Grid.Row="1">
@@ -63,8 +63,8 @@
             <TextBox x:Name="Ingr" Grid.Row="0" Margin="29,232,34,10" TextWrapping="Wrap" Width="270" Height="270"/>
             <TextBox x:Name="Name" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2" Margin="341,26,0,0" TextWrapping="Wrap" Width="332"/>
             <TextBox x:Name="Desc" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,87,0,0" Height="417" Width="321" Grid.Column="1" FontSize="16" TextWrapping="Wrap"/>
-            <Button Content="Одобрить" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click_1" Margin="0,100"/>
-            <Button Content="Не одобрять" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click_2"/>
+            <Button Content="Одобрить" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Approve_Click" Margin="0,100"/>
+            <Button Content="Не одобрять" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Disapprove_Click"/>
         </Grid>
     </Grid>
 </Window>

@@ -37,9 +37,9 @@
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
-                <TextBlock Grid.Column="1"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown">Личный кабинет</TextBlock>
-                <TextBlock Grid.Column="2"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1">Список рецептов</TextBlock>
-                <Button Grid.Column="5" Content="Выйти" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Button_Click"/>
+                <TextBlock Grid.Column="1"  Style="{StaticResource header}" MouseLeftButtonDown="PrivateAccountModerator_MouseLeftButtonDown">Личный кабинет</TextBlock>
+                <TextBlock Grid.Column="2"  Style="{StaticResource header}" MouseLeftButtonDown="ListRecipe_MouseLeftButtonDown">Список рецептов</TextBlock>
+                <Button Grid.Column="5" Content="Выйти" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Authorization_Click"/>
             </Grid>
         </Border>
         <Label Content="Рецепты" FontSize="26" Margin="60,0" Grid.Row="1"></Label>
