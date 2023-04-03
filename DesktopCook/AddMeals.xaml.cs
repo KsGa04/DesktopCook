@@ -26,12 +26,25 @@ namespace DesktopCook
         private Meal _meals;
         private string _selectedCountryCode;
         private Category _selectedCountry;
+
+        private List<Meal> _meal = new List<Meal>();
         public AddMeals()
         {
             InitializeComponent();
+            ListViewLoad();
             foreach (var d in _db.Category)
             {
                 Categ.Items.Add(d.NameCategory);
+            }
+        }
+
+        public void ListViewLoad()
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                var moderators = db.Meal.ToList();
+
+                Meals.ItemsSource = moderators;
             }
         }
 
@@ -99,6 +112,32 @@ namespace DesktopCook
             {
                 MessageBox.Show("Заполните все поля");
             }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (Meals.SelectedIndex >= 0)
+            {
+                var result = MessageBox.Show("Вы точно хотите удалить это блюдо?", "Удалить", MessageBoxButton.YesNo);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    var item = Meals.SelectedItem as Meal;
+                    int id = item.IdMeal;
+                    using (CookingBookEntities db = new CookingBookEntities())
+                    {
+                        Meal meal = db.Meal.Where(x => x.IdMeal == id).FirstOrDefault();
+
+                        db.Meal.Remove(meal);
+                        db.SaveChanges();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали ни один элемент");
+            }
+            ListViewLoad();
         }
     }
 }

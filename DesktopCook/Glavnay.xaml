@@ -4,49 +4,59 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopCook"
-        mc:Ignorable="d"
-        Title="Glavnay" Height="620" Width="1040" MinHeight="620" MaxHeight="620" MinWidth="1024" MaxWidth="1040">
+        mc:Ignorable="d" Icon="https://i.pinimg.com/originals/89/d3/3d/89d33d1c65dbe9c6a994da1a59cb32d3.png"
+        Title="Главная" Height="620" Width="1040" MinHeight="620" MaxHeight="620" MinWidth="1040" MaxWidth="1040">
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="header">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="#ffde89"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition Height="416"></RowDefinition>
-            <RowDefinition Height="114"></RowDefinition>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="416"/>
+            <RowDefinition Height="114"/>
         </Grid.RowDefinitions>
         <Border BorderBrush="Black" BorderThickness="1">
             <Grid Grid.Row="0" Background="#fff5ea">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="371"></ColumnDefinition>
-                    <ColumnDefinition Width="137"></ColumnDefinition>
+                    <ColumnDefinition Width="129"/>
+                    <ColumnDefinition Width="170"/>
+                    <ColumnDefinition Width="129"/>
+                    <ColumnDefinition Width="129"/>
+                    <ColumnDefinition Width="213"/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"></TextBlock>
-                <TextBlock Grid.Column="1"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1">Личный <LineBreak/> кабинет</TextBlock>
-                <TextBlock Grid.Column="2"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_2">Каталог блюд</TextBlock>
-                <TextBlock Grid.Column="3"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_3">Мои рецепты</TextBlock>
-                <Button Grid.Column="5" Content="Выйти" BorderBrush="Black" BorderThickness="1" Background="#ffde89" FontSize="16" Width="113" Height="36" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Button_Click">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="5"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
+                <TextBlock Grid.Column="1"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1">Личный кабинет</TextBlock>
+                <TextBlock Grid.Column="2"   Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_2">Каталог блюд</TextBlock>
+                <TextBlock Grid.Column="3"   Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_3">Мои рецепты</TextBlock>
+                <Button Grid.Column="5" Content="Выйти" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Button_Click"/>
             </Grid>
         </Border>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Image Grid.Column="0" Source="https://kartinkin.net/uploads/posts/2021-08/1629834094_11-kartinkin-com-p-blyuda-gordona-ramzi-yeda-krasivo-foto-12.jpg" Height="416"></Image>
             <Grid Grid.Column="1" Width="241" Height="201">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="35"></RowDefinition>
-                    <RowDefinition Height="75"></RowDefinition>
-                    <RowDefinition Height="35"></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition Height="75"/>
+                    <RowDefinition Height="35"/>
+                    <RowDefinition/>
                 </Grid.RowDefinitions>
                 <TextBlock FontSize="15" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="0">Вкусно / быстро</TextBlock>
                 <TextBlock FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Top" Grid.Row="1" TextAlignment="Center">“Знать о еде человек должен <LineBreak/> не меньше, чем о математике <LineBreak/> о своём родном языке”</TextBlock>
@@ -54,12 +64,12 @@
                     <Run Text="Гордон Рамзи" Foreground="#ff7a00"/>
                     <Run Text=", знаменитый британский шеф-повар" Foreground="Black"></Run>
                 </TextBlock>
-                <Button Background="#ffe6a5" FontSize="15" BorderBrush="Black" BorderThickness="1" Grid.Row="3" Width="177" Height="35" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                    <Hyperlink Foreground="Black" NavigateUri="https://www.gordonramsay.com/" RequestNavigate="Hyperlink_RequestNavigate">Перейти к источнику</Hyperlink>
+                <Button Grid.Row="3" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                    <Hyperlink TextDecorations="None" Foreground="Black" NavigateUri="https://www.gordonramsay.com/" RequestNavigate="Hyperlink_RequestNavigate">Перейти к источнику</Hyperlink>
                 </Button>
             </Grid>
         </Grid>
-        <Grid Background="#ffdab9" Grid.Row="2">
+        <Grid Background="#ffde89" Grid.Row="2">
             <TextBlock Text="Найти рецепт" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
             <TextBox Text="Что ты хочешь приготовить?" Width="502" Height="46" FontSize="16" Foreground="#515151" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderThickness="1" BorderBrush="Black"></TextBox>
         </Grid>

@@ -3,13 +3,27 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DesktopCook" xmlns:system="clr-namespace:System;assembly=mscorlib"
-        mc:Ignorable="d"
+        xmlns:local="clr-namespace:DesktopCook" 
+        xmlns:system="clr-namespace:System;assembly=mscorlib"
+        mc:Ignorable="d" Icon="https://i.pinimg.com/originals/89/d3/3d/89d33d1c65dbe9c6a994da1a59cb32d3.png"
         Title="AllMeals" Height="620" Width="1040" MinHeight="620" MaxHeight="620" MinWidth="1024" MaxWidth="1040">
     <Window.Resources>
         <system:String x:Key="NullImage">
             pack://application:,,,/Resources/Picture.jpg
         </system:String>
+        <Style TargetType="Button">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="#ffde89"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="header">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -20,23 +34,17 @@
             <Grid Grid.Row="0" Background="#fff5ea">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="129"></ColumnDefinition>
+                    <ColumnDefinition Width="170"></ColumnDefinition>
                     <ColumnDefinition Width="129"></ColumnDefinition>
                     <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="371"></ColumnDefinition>
-                    <ColumnDefinition Width="137"></ColumnDefinition>
+                    <ColumnDefinition Width="213"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown"></TextBlock>
-                <TextBlock Grid.Column="1"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1">Личный <LineBreak/> кабинет</TextBlock>
-                <TextBlock Grid.Column="2"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_2">Каталог блюд</TextBlock>
-                <TextBlock Grid.Column="3"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_3">Мои рецепты</TextBlock>
-                <Button Grid.Column="5" Content="Выйти" BorderBrush="Black" BorderThickness="1" Background="#ffde89" FontSize="16" Width="113" Height="36" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Button_Click">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="5"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
+                <TextBlock Grid.Column="1" Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1">Личный кабинет</TextBlock>
+                <TextBlock Grid.Column="2" Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_2">Каталог блюд</TextBlock>
+                <TextBlock Grid.Column="3"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_3">Мои рецепты</TextBlock>
+                <Button Grid.Column="5" Content="Выйти" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Button_Click"/>
             </Grid>
         </Border>
         <Label Content="Блюда" FontSize="26" Margin="60,0" Grid.Row="1"></Label>

@@ -23,9 +23,20 @@ namespace DesktopCook
     {
         private CookingBookEntities _db = new CookingBookEntities();
         private byte[] _image;
+        private List<Category> _category = new List<Category>();
         public AddCategory()
         {
             InitializeComponent();
+            ListViewLoad();
+        }
+        public void ListViewLoad()
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                var categories = db.Category.ToList();
+
+                Categ.ItemsSource = categories;
+            }
         }
 
         private void TextBlock_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
@@ -92,6 +103,32 @@ namespace DesktopCook
                     MessageBox.Show("Заполните все окна");
                 }
             }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            if (Categ.SelectedIndex >= 0)
+            {
+                var result = MessageBox.Show("Вы точно хотите удалить эту категорию?", "Удалить", MessageBoxButton.YesNo);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    var item = Categ.SelectedItem as Category;
+                    int id = item.IdCategory;
+                    using (CookingBookEntities db = new CookingBookEntities())
+                    {
+                        Category category = db.Category.Where(x => x.IdCategory == id).FirstOrDefault();
+
+                        db.Category.Remove(category);
+                        db.SaveChanges();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Вы не выбрали ни один элемент");
+            }
+            ListViewLoad();
         }
     }
 }

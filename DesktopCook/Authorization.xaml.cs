@@ -93,5 +93,13 @@ namespace DesktopCook
 
             }
         }
+
+        private void Pass_Checked(object sender, RoutedEventArgs e)
+        {
+            if (Pass.IsChecked == true)
+            {
+                
+            }
+        }
     }
 }

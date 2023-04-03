@@ -4,54 +4,83 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopCook"
-        mc:Ignorable="d"
-        Title="AddWorker" Height="600" Width="1024" MinHeight="600" MaxHeight="600" MinWidth="1024" MaxWidth="1024">
+        mc:Ignorable="d" Icon="https://i.pinimg.com/originals/89/d3/3d/89d33d1c65dbe9c6a994da1a59cb32d3.png"
+        Title="Добавить модератора" Height="600" Width="1024" MinHeight="600" MaxHeight="600" MinWidth="1024" MaxWidth="1024">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="#ffde89"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#fff5ea"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Width" Value="151"/>
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="header">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBlock" x:Key="main">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="3">
             <Grid Grid.Row="0" Background="#fff5ea">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
+                    <ColumnDefinition Width="129"/>
+                    <ColumnDefinition Width="129"/>
+                    <ColumnDefinition Width="129"/>
+                    <ColumnDefinition Width="129"/>
+                    <ColumnDefinition Width="129"/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_4"></TextBlock>
-                <TextBlock Grid.Column="1"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" TextAlignment="Center">Добавить <LineBreak/> Категорию</TextBlock>
-                <TextBlock Grid.Column="2"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" TextAlignment="Center">Добавить <LineBreak/> Блюдо</TextBlock>
-                <TextBlock Grid.Column="3"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_2" TextAlignment="Center">Добавить <LineBreak/> Модератора</TextBlock>
-                <TextBlock Grid.Column="4"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_3" TextAlignment="Center">Просмотреть <LineBreak/> Модераторов</TextBlock>
+                <TextBlock Grid.Column="1"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown" TextAlignment="Center">Добавить <LineBreak/> Категорию</TextBlock>
+                <TextBlock Grid.Column="2" Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1" TextAlignment="Center">Добавить <LineBreak/> Блюдо</TextBlock>
+                <TextBlock Grid.Column="3"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_2" TextAlignment="Center">Добавить <LineBreak/> Модератора</TextBlock>
+                <TextBlock Grid.Column="4"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_3" TextAlignment="Center">Просмотреть <LineBreak/> Модераторов</TextBlock>
             </Grid>
         </Border>
         <Label Content="Добавление Модератора" FontSize="24" Grid.Row="1" Width="300"  Height="60" Margin="31,27,693,427"></Label>
         <Grid Grid.Row="1" Width="800" Height="200">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
             </Grid.RowDefinitions>
-            <TextBlock Text="Почта" Grid.Column="0" Grid.Row="0" FontSize="22" VerticalAlignment="Bottom" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Text="Пароль" Grid.Column="0" Grid.Row="1" FontSize="22" VerticalAlignment="Bottom" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Text="Никнейм" Grid.Column="0" Grid.Row="2" FontSize="22" VerticalAlignment="Bottom" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Text="Дата Рождения" Grid.Column="2" Grid.Row="0" FontSize="22" VerticalAlignment="Bottom" HorizontalAlignment="Center"></TextBlock>
-            <TextBlock Text="Категория блюд" Grid.Column="2" Grid.Row="1" FontSize="22" VerticalAlignment="Bottom" HorizontalAlignment="Center"></TextBlock>
-            <TextBox x:Name="Post" FontSize="22" Grid.Column="1" Grid.Row="0" Margin="5"></TextBox>
-            <TextBox x:Name="Pass" FontSize="22" Grid.Column="1" Grid.Row="1" Margin="5"></TextBox>
-            <TextBox x:Name="Nik" FontSize="22" Grid.Column="1" Grid.Row="2" Margin="5"></TextBox>
-            <TextBox x:Name="Date" FontSize="22" Grid.Column="3" Grid.Row="0" Margin="5"></TextBox>
-            <ComboBox x:Name="Categ" FontSize="22" Grid.Column="3" Grid.Row="1" Margin="5"></ComboBox>
-            <Button Content="Добавить" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" FontSize="22" Margin="5" Width="300" Background="#ffde89" Click="Button_Click"></Button>
+            <TextBlock Text="Почта" Grid.Column="0" Grid.Row="0" Style="{StaticResource main}"/>
+            <TextBlock Text="Пароль" Grid.Column="0" Grid.Row="1" Style="{StaticResource main}"/>
+            <TextBlock Text="Никнейм" Grid.Column="0" Grid.Row="2" Style="{StaticResource main}"/>
+            <TextBlock Text="Дата Рождения" Grid.Column="2" Grid.Row="0" Style="{StaticResource main}"/>
+            <TextBlock Text="Категория блюд" Grid.Column="2" Grid.Row="1" Style="{StaticResource main}"/>
+            <TextBox x:Name="Post" Grid.Column="1" Grid.Row="0" Margin="5"></TextBox>
+            <TextBox x:Name="Pass" Grid.Column="1" Grid.Row="1" Margin="5"></TextBox>
+            <TextBox x:Name="Nik" Grid.Column="1" Grid.Row="2" Margin="5"></TextBox>
+            <TextBox x:Name="Date" Grid.Column="3" Grid.Row="0" Margin="5"></TextBox>
+            <ComboBox x:Name="Categ" Grid.Column="3" Grid.Row="1" Margin="5"></ComboBox>
+            <Button Content="Добавить" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" Margin="5" Click="Button_Click"></Button>
         </Grid>
     </Grid>
 </Window>

@@ -4,8 +4,18 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopCook"
-        mc:Ignorable="d"
-        Title="Recovery" Height="620" Width="1040" MinHeight="620" MaxHeight="620" MinWidth="1024" MaxWidth="1040">
+        mc:Ignorable="d" Icon="https://i.pinimg.com/originals/89/d3/3d/89d33d1c65dbe9c6a994da1a59cb32d3.png"
+        Title="Восстановление пароля" Height="620" Width="1040" MinHeight="620" MaxHeight="620" MinWidth="1024" MaxWidth="1040">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="#ffde89"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="180"></RowDefinition>
@@ -28,7 +38,7 @@
                     <TextBlock Text="Восстановление пароля" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Grid.Row="0"></TextBlock>
                     <TextBlock Text="Введите почту для отправки восстановления пароля" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="1" Margin="10"></TextBlock>
                     <TextBox x:Name="textboxMail" Text="Почта" Width="239" Height="35" FontSize="13" Margin="10" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1"></TextBox>
-                    <Button BorderBrush="Black" BorderThickness="1" Background="#ffe6a5" Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Width="130" Height="35" FontSize="13" Click="Button_Click">Отправить</Button>
+                    <Button Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click">Отправить</Button>
                 </Grid>
             </Border>
         </Grid>

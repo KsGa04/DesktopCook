@@ -4,49 +4,67 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopCook"
-        mc:Ignorable="d"
-        Title="ModirateRecipe" Height="600" Width="1024">
+        mc:Ignorable="d" Icon="https://i.pinimg.com/originals/89/d3/3d/89d33d1c65dbe9c6a994da1a59cb32d3.png"
+        Title="Модерация рецепта" Height="600" Width="1024">
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="header">
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="Background" Value="#ffde89"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="FontSize" Value="18"/>
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="Background" Value="#fff5ea"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="Width" Value="151"/>
+            <Setter Property="Height" Value="36"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="70"></RowDefinition>
-            <RowDefinition></RowDefinition>
+            <RowDefinition Height="70"/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
         <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="3">
             <Grid Grid.Row="0" Background="#fff5ea">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="371"></ColumnDefinition>
-                    <ColumnDefinition Width="137"></ColumnDefinition>
+                    <ColumnDefinition Width="129"/>
+                    <ColumnDefinition Width="170"/>
+                    <ColumnDefinition Width="129"/>
+                    <ColumnDefinition Width="129"/>
+                    <ColumnDefinition Width="213"/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" ></TextBlock>
-                <TextBlock Grid.Column="1"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown">Личный <LineBreak/> кабинет</TextBlock>
-                <TextBlock Grid.Column="2"  FontSize="16" HorizontalAlignment="Center" VerticalAlignment="Center" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1">Список рецептов</TextBlock>
-                <Button Grid.Column="5" Content="Выйти" BorderBrush="Black" BorderThickness="1" Background="#ffde89" FontSize="16" Width="113" Height="36" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Button_Click">
-                    <Button.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="5"/>
-                        </Style>
-                    </Button.Resources>
-                </Button>
+                <TextBlock Grid.Column="1"  Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown">Личный кабинет</TextBlock>
+                <TextBlock Grid.Column="2" Style="{StaticResource header}" MouseLeftButtonDown="TextBlock_MouseLeftButtonDown_1">Список рецептов</TextBlock>
+                <Button Grid.Column="5" Content="Выйти" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Button_Click"/>
             </Grid>
         </Border>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Width="278" Height="181" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,26,0,0">
-                <Image x:Name="ImageRecipe"></Image>
+                <Image x:Name="ImageRecipe"/>
             </Border>
-            <TextBlock x:Name="Ingr" Grid.Row="0" Margin="29,232,34,10" TextWrapping="Wrap"></TextBlock>
-            <TextBlock x:Name="Name" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2" Margin="341,26,0,0" TextWrapping="Wrap" Width="332"/>
-            <TextBlock x:Name="Desc" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,87,0,0" Height="417" Width="321" Grid.Column="1" FontSize="16" TextWrapping="Wrap"/>
-            <Button Content="Одобрить" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Background="#ffde89" FontSize="16" Width="113" Height="36" Click="Button_Click_1" Margin="100"/>
-            <Button Content="Не одобрять" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Background="#ffde89" FontSize="16" Width="113" Height="36" Click="Button_Click_2"/>
+            <TextBox x:Name="Ingr" Grid.Row="0" Margin="29,232,34,10" TextWrapping="Wrap" Width="270" Height="270"/>
+            <TextBox x:Name="Name" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2" Margin="341,26,0,0" TextWrapping="Wrap" Width="332"/>
+            <TextBox x:Name="Desc" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,87,0,0" Height="417" Width="321" Grid.Column="1" FontSize="16" TextWrapping="Wrap"/>
+            <Button Content="Одобрить" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click_1" Margin="0,100"/>
+            <Button Content="Не одобрять" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Button_Click_2"/>
         </Grid>
     </Grid>
 </Window>
