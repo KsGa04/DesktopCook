@@ -17,17 +17,22 @@ using System.Windows.Shapes;
 namespace DesktopCook
 {
     /// <summary>
-    /// Логика взаимодействия для AddCategory.xaml
+    /// Логика взаимодействия для UpdateCategory.xaml
     /// </summary>
-    public partial class AddCategory : Window
+    public partial class UpdateCategory : Window
     {
+        int id;
         private CookingBookEntities _db = new CookingBookEntities();
         private byte[] _image;
         private List<Category> _category = new List<Category>();
-        public AddCategory()
+        public UpdateCategory()
         {
             InitializeComponent();
             ListViewLoad();
+            Choose_A_Photo.IsEnabled = false;
+            SaveChanges.IsEnabled = false;
+            Name.IsEnabled = false;
+
         }
         public void ListViewLoad()
         {
@@ -101,19 +106,18 @@ namespace DesktopCook
                 _image = System.IO.File.ReadAllBytes(path);
             }
             MemoryStream ms = new MemoryStream(_image);
-            ImageAccount.Source = BitmapFrame.Create(ms, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+            ImageCategory.Source = BitmapFrame.Create(ms, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
         }
 
-        private void AddCategory_Click(object sender, RoutedEventArgs e)
+        private void UpdateCategory_Click(object sender, RoutedEventArgs e)
         {
             using (CookingBookEntities db = new CookingBookEntities())
             {
                 if (Name.Text != "")
                 {
                     Category category = new Category(Name.Text, _image);
-                    db.Category.Add(category);
                     db.SaveChanges();
-                    MessageBox.Show("Запись добавлена");
+                    MessageBox.Show("Запись обновлена");
                 }
                 else
                 {
@@ -121,31 +125,33 @@ namespace DesktopCook
                 }
             }
         }
-
-        private void RemoveCategory_Click(object sender, RoutedEventArgs e)
+        private void GetCategory_Click(object sender, RoutedEventArgs e)
         {
-            if (Categ.SelectedIndex >= 0)
+            try
             {
-                var result = MessageBox.Show("Вы точно хотите удалить эту категорию?", "Удалить", MessageBoxButton.YesNo);
-
-                if (result == MessageBoxResult.Yes)
+                id = Convert.ToInt32(textboxId.Text);
+                using (CookingBookEntities db = new CookingBookEntities())
                 {
-                    var item = Categ.SelectedItem as Category;
-                    int id = item.IdCategory;
-                    using (CookingBookEntities db = new CookingBookEntities())
+                    Category category = db.Category.FirstOrDefault(x => x.IdCategory == id);
+                    if (category == null)
                     {
-                        Category category = db.Category.Where(x => x.IdCategory == id).FirstOrDefault();
-
-                        db.Category.Remove(category);
-                        db.SaveChanges();
+                        throw new Exception();
                     }
+                    _image = category.ImageCategory;
+                    MemoryStream ms = new MemoryStream(_image);
+                    ImageCategory.Source = BitmapFrame.Create(ms, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
+                    Name.Text = category.NameCategory;
+                    Name.IsEnabled = true;
+                    SaveChanges.IsEnabled = true;
+                    Choose_A_Photo.IsEnabled = true;
+                    textboxId.IsEnabled = false;
+                    GetInformation.IsEnabled = false;
                 }
             }
-            else
+            catch
             {
-                MessageBox.Show("Вы не выбрали ни один элемент");
+                MessageBox.Show("Введите действительный Id");
             }
-            ListViewLoad();
         }
     }
 }

@@ -82,7 +82,24 @@ namespace DesktopCook
             authorization.Show();
             this.Hide();
         }
-
+        private void UpdateCategory_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            UpdateCategory updateCategory = new UpdateCategory();
+            updateCategory.Show();
+            this.Hide();
+        }
+        private void UpdateMeals_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            UpdateMeals updateMeals = new UpdateMeals();
+            updateMeals.Show();
+            this.Hide();
+        }
+        private void UpdateModerator_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            UpdateModerator updateModerator = new UpdateModerator();
+            updateModerator.Show();
+            this.Hide();
+        }
         private void ChoosePhoto_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();

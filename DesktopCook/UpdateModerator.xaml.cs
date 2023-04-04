@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,20 +16,25 @@ using System.Windows.Shapes;
 namespace DesktopCook
 {
     /// <summary>
-    /// Логика взаимодействия для AddWorker.xaml
+    /// Логика взаимодействия для UpdateModerator.xaml
     /// </summary>
-    public partial class AddWorker : Window
+    public partial class UpdateModerator : Window
     {
+        int id;
         private CookingBookEntities _db = new CookingBookEntities();
-        public AddWorker()
+        public UpdateModerator()
         {
             InitializeComponent();
+            Post.IsEnabled = false;
+            Pass.IsEnabled = false;
+            Nik.IsEnabled = false;
+            Date.IsEnabled = false;
+            Categ.IsEnabled = false;
             foreach (var d in _db.Category)
             {
                 Categ.Items.Add(d.NameCategory);
             }
         }
-
         private void AddCategory_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AddCategory addCategory = new AddCategory();
@@ -81,7 +87,7 @@ namespace DesktopCook
             updateModerator.Show();
             this.Hide();
         }
-        private void AddWorker_Click(object sender, RoutedEventArgs e)
+        private void UpdateWorker_Click(object sender, RoutedEventArgs e)
         {
             if ((Post.Text != null) && (Pass.Text != null))
             {
@@ -93,7 +99,6 @@ namespace DesktopCook
                     moderator.NikName = Nik.Text;
                     moderator.DateOfBirth = Convert.ToDateTime(Date.Text);
                     moderator.IdCategory = Convert.ToInt32(Categ.SelectedIndex + 1);
-                    db.Moderator.Add(moderator);
                     db.SaveChanges();
 
                 }
@@ -102,6 +107,38 @@ namespace DesktopCook
             else
             {
                 MessageBox.Show("Заполните поля Почты и Пароля");
+            }
+        }
+        private void GetCategory_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                id = Convert.ToInt32(textboxId.Text);
+                using (CookingBookEntities db = new CookingBookEntities())
+                {
+                    Moderator moderator = db.Moderator.FirstOrDefault(x => x.IdModerator == id);
+                    if (moderator == null)
+                    {
+                        throw new Exception();
+                    }
+                    Post.Text = moderator.Mail;
+                    Pass.Text = moderator.Password;
+                    Nik.Text = moderator.NikName;
+                    Date.Text = Convert.ToString(moderator.DateOfBirth);
+                    Categ.SelectedIndex = (int)moderator.IdCategory;
+                    textboxId.IsEnabled = false;
+                    GetInformation.IsEnabled = false;
+                    Post.IsEnabled = true;
+                    Pass.IsEnabled = true;
+                    Nik.IsEnabled = true;
+                    Date.IsEnabled = true;
+                    Categ.IsEnabled = true;
+
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Введите действительный Id");
             }
         }
     }

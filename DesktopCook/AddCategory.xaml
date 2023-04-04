@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopCook"
         mc:Ignorable="d" Icon="https://i.pinimg.com/originals/89/d3/3d/89d33d1c65dbe9c6a994da1a59cb32d3.png"
-        Title="Добавить категорию" Height="620" Width="720" MinHeight="620" MaxHeight="620" MinWidth="720" MaxWidth="720">
+        Title="Добавить категорию" Height="620" Width="1024" MinHeight="620" MaxHeight="620" MinWidth="1024" MaxWidth="1024">
     <Window.Resources>
         <Style TargetType="Button">
             <Setter Property="BorderBrush" Value="Black"/>
@@ -41,6 +41,9 @@
         <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="3">
             <Grid Grid.Row="0" Background="#fff5ea">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="129"/>
+                    <ColumnDefinition Width="129"/>
                     <ColumnDefinition Width="129"/>
                     <ColumnDefinition Width="129"/>
                     <ColumnDefinition Width="129"/>
@@ -52,6 +55,9 @@
                 <TextBlock Grid.Column="2"  Style="{StaticResource header}" MouseLeftButtonDown="AddMeals_MouseLeftButtonDown">Добавить <LineBreak/> Блюдо</TextBlock>
                 <TextBlock Grid.Column="3"  Style="{StaticResource header}" MouseLeftButtonDown="AddWorker_MouseLeftButtonDown" >Добавить <LineBreak/> Модератора</TextBlock>
                 <TextBlock Grid.Column="4"  Style="{StaticResource header}" MouseLeftButtonDown="AllModerator_MouseLeftButtonDown">Просмотреть <LineBreak/> Модераторов</TextBlock>
+                <TextBlock Grid.Column="5" Style="{StaticResource header}" MouseLeftButtonDown="UpdateCategory_MouseLeftButtonDown">Обновить <LineBreak/> Категорию</TextBlock>
+                <TextBlock Grid.Column="6" Style="{StaticResource header}" MouseLeftButtonDown="UpdateMeals_MouseLeftButtonDown">Обновить  <LineBreak/> Блюдо</TextBlock>
+                <TextBlock Grid.Column="7" Style="{StaticResource header}" MouseLeftButtonDown="UpdateModerator_MouseLeftButtonDown">Обновить <LineBreak/> Модератора</TextBlock>
             </Grid>
         </Border>
         <Grid Grid.Row="1" Grid.ColumnSpan="3">

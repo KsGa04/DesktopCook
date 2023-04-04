@@ -147,6 +147,15 @@
     <Compile Include="SpecificMeal.xaml.cs">
       <DependentUpon>SpecificMeal.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UpdateCategory.xaml.cs">
+      <DependentUpon>UpdateCategory.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateMeals.xaml.cs">
+      <DependentUpon>UpdateMeals.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UpdateModerator.xaml.cs">
+      <DependentUpon>UpdateModerator.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UpdateMyRecipe.xaml.cs">
       <DependentUpon>UpdateMyRecipe.xaml</DependentUpon>
     </Compile>
@@ -274,6 +283,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="SpecificMeal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateCategory.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateMeals.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UpdateModerator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
