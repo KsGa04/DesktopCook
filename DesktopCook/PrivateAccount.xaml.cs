@@ -32,10 +32,10 @@ namespace DesktopCook
 
             _users = users;
             id = users.IdUser;
-            Nikname.Text = _users.NikName;
-            DateBirth.Text = _users.DateOfBirth.ToString();
-            Post.Text = _users.Mail;
-            Pass.Password = _users.Password;
+            Nikname.Text = users.NikName;
+            DateBirth.Text = users.DateOfBirth.ToString();
+            Post.Text = users.Mail;
+            Pass.Password = users.Password;
         }
 
 
