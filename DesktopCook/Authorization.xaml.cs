@@ -1,22 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
+﻿using System.Windows;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace DesktopCook
 {
-    /// <summary>
-    /// Логика взаимодействия для Authorization.xaml
-    /// </summary>
     public partial class Authorization : Window
     {
         public Authorization()
@@ -48,7 +34,6 @@ namespace DesktopCook
                     {
                         if ((textboxLog.Text == user.Mail) && (textboxPass.Password == user.Password))
                         {
-                            //MessageBox.Show("Вход успешен!");
                             Glavnay glavnay = new Glavnay(user);
                             this.Hide();
                             MessageBox.Show("Вы вошли под учетной записью " + user.Mail);
@@ -64,7 +49,6 @@ namespace DesktopCook
                     {
                         if ((textboxLog.Text == moderator.Mail) && (textboxPass.Password == moderator.Password))
                         {
-                            //MessageBox.Show("Вход успешен!");
                             PrivateAccountModerator glavnay = new PrivateAccountModerator(moderator);
                             this.Hide();
                             MessageBox.Show("Вы вошли под учетной записью " + moderator.Mail);
@@ -80,7 +64,6 @@ namespace DesktopCook
                     {
                         if ((textboxLog.Text == administrator.Mail) && (textboxPass.Password == administrator.Password))
                         {
-                            //MessageBox.Show("Вход успешен!");
                             AddCategory glavnay = new AddCategory();
                             this.Hide();
                             MessageBox.Show("Вы вошли под учетной записью " + administrator.Mail);
@@ -98,7 +81,6 @@ namespace DesktopCook
         {
             if (Pass.IsChecked == true)
             {
-                
             }
         }
     }

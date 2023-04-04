@@ -1,26 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace DesktopCook
 {
-    /// <summary>
-    /// Логика взаимодействия для AllModerator.xaml
-    /// </summary>
     public partial class AllModerator : Window
     {
-        private CookingBookEntities _context = new CookingBookEntities();
-        private List<Moderator> _moderator = new List<Moderator>();
         public AllModerator()
         {
             InitializeComponent();

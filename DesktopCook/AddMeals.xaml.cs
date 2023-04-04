@@ -3,29 +3,17 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace DesktopCook
 {
-    /// <summary>
-    /// Логика взаимодействия для AddMeals.xaml
-    /// </summary>
+
     public partial class AddMeals : Window
     {
         private CookingBookEntities _db = new CookingBookEntities();
         private byte[] _image = null;
-        private Meal _meals;
-        private string _selectedCountryCode;
-        private Category _selectedCountry;
 
         private List<Meal> _meal = new List<Meal>();
         public AddMeals()

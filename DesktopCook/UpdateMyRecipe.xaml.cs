@@ -3,26 +3,14 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace DesktopCook
 {
-    /// <summary>
-    /// Логика взаимодействия для UpdateMyRecipe.xaml
-    /// </summary>
     public partial class UpdateMyRecipe : Window
     {
-        private CookingBookEntities _context = new CookingBookEntities();
-        private List<Recipe> _recipe = new List<Recipe>();
         private byte[] _image;
         private Users _user;
         private int _id;

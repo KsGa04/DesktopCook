@@ -3,28 +3,16 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace DesktopCook
 {
-    /// <summary>
-    /// Логика взаимодействия для UpdateCategory.xaml
-    /// </summary>
     public partial class UpdateCategory : Window
     {
         int id;
-        private CookingBookEntities _db = new CookingBookEntities();
         private byte[] _image;
-        private List<Category> _category = new List<Category>();
         public UpdateCategory()
         {
             InitializeComponent();
