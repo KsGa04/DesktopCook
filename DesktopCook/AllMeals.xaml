@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DesktopCook" 
         xmlns:system="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d" Icon="https://i.pinimg.com/originals/89/d3/3d/89d33d1c65dbe9c6a994da1a59cb32d3.png"
-        Title="AllMeals" Height="620" Width="1040" MinHeight="620" MaxHeight="620" MinWidth="1024" MaxWidth="1040">
+        Title="AllMeals" Height="620" Width="1024" MinHeight="620" MaxHeight="620" MinWidth="1024" MaxWidth="1024">
     <Window.Resources>
         <system:String x:Key="NullImage">
             pack://application:,,,/Resources/Picture.jpg
@@ -18,6 +18,14 @@
             <Setter Property="Width" Value="200"/>
             <Setter Property="Height" Value="36"/>
             <Setter Property="FontSize" Value="18"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Trigger.Setters>
+                        <Setter Property="Background" Value="DodgerBlue" />
+                        <Setter Property="Foreground" Value="White"/>
+                    </Trigger.Setters>
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <Style TargetType="TextBlock" x:Key="header">
             <Setter Property="FontSize" Value="16"/>
@@ -33,12 +41,12 @@
         <Border BorderBrush="Black" BorderThickness="1" Grid.ColumnSpan="3">
             <Grid Grid.Row="0" Background="#fff5ea">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="170"></ColumnDefinition>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="129"></ColumnDefinition>
-                    <ColumnDefinition Width="213"></ColumnDefinition>
-                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition Width="129"/>
+                    <ColumnDefinition Width="170"/>
+                    <ColumnDefinition Width="129"/>
+                    <ColumnDefinition Width="129"/>
+                    <ColumnDefinition Width="213"/>
+                    <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" MouseLeftButtonDown="Main_MouseLeftButtonDown"></TextBlock>
                 <TextBlock Grid.Column="1" Style="{StaticResource header}" MouseLeftButtonDown="PrivateAccount_MouseLeftButtonDown">Личный кабинет</TextBlock>
@@ -59,7 +67,7 @@
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Border BorderThickness="1" BorderBrush="Gray" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="8,0">
-                        <Grid Width="300" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2,0">
+                        <Grid Width="280" Height="200" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="2,0">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="50*"></RowDefinition>
                                 <RowDefinition Height="Auto"></RowDefinition>
