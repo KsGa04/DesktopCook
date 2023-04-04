@@ -37,7 +37,7 @@ namespace DesktopCook
                 Categ.Items.Add(d.NameCategory);
             }
             Name.IsEnabled = false;
-            UpdateMeals.IsEnabled = false;
+            UpdateMeal.IsEnabled = false;
             Choose_A_Photo.IsEnabled = false;
             textboxId.IsEnabled = true;
             GetInformation.IsEnabled = true;
@@ -152,7 +152,7 @@ namespace DesktopCook
                     Desc.Text = meal.DescriptionMeal;
                     Categ.SelectedItem = meal.IdCategory;
                     Name.IsEnabled = true;
-                    UpdateMeals.IsEnabled = true;
+                    UpdateMeal.IsEnabled = true;
                     Choose_A_Photo.IsEnabled = true;
                     textboxId.IsEnabled = false;
                     GetInformation.IsEnabled = false;

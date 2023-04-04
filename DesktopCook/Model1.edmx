@@ -18,7 +18,7 @@
             <PropertyRef Name="IdCategory" />
           </Key>
           <Property Name="IdCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="NameCategory" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="NameCategory" Type="nvarchar(max)" Nullable="false" />
           <Property Name="ImageCategory" Type="image" />
         </EntityType>
         <EntityType Name="Comment">
@@ -37,8 +37,8 @@
           </Key>
           <Property Name="IdMeal" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ImageMeal" Type="image" />
-          <Property Name="NameMeal" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="DescriptionMeal" Type="nvarchar" MaxLength="1000" />
+          <Property Name="NameMeal" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="DescriptionMeal" Type="nvarchar(max)" />
           <Property Name="IdCategory" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Moderator">
@@ -58,9 +58,9 @@
           </Key>
           <Property Name="IdRecipe" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ImageRecipe" Type="image" />
-          <Property Name="NameRecipe" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Ingredient" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Description" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="NameRecipe" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Ingredient" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Moder" Type="bit" Nullable="false" />
           <Property Name="IdUser" Type="int" />
           <Property Name="IdCategory" Type="int" />
@@ -76,7 +76,7 @@
           <Property Name="NikName" Type="nvarchar" MaxLength="50" />
           <Property Name="DateOfBirth" Type="date" />
         </EntityType>
-        <Association Name="FK__Comment__IdRecip__35BCFE0A">
+        <Association Name="FK__Comment__IdRecip__48CFD27E">
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -88,7 +88,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comment__IdUser__34C8D9D1">
+        <Association Name="FK__Comment__IdUser__47DBAE45">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -100,7 +100,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Meal__IdCategory__267ABA7A">
+        <Association Name="FK__Meal__IdCategory__398D8EEE">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Meal" Type="Self.Meal" Multiplicity="*" />
           <ReferentialConstraint>
@@ -112,7 +112,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Moderator__IdCat__2B3F6F97">
+        <Association Name="FK__Moderator__IdCat__3E52440B">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Moderator" Type="Self.Moderator" Multiplicity="*" />
           <ReferentialConstraint>
@@ -124,7 +124,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Recipe__IdCatego__30F848ED">
+        <Association Name="FK__Recipe__IdCatego__440B1D61">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
           <ReferentialConstraint>
@@ -136,7 +136,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Recipe__IdMeal__31EC6D26">
+        <Association Name="FK__Recipe__IdMeal__44FF419A">
           <End Role="Meal" Type="Self.Meal" Multiplicity="0..1" />
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
           <ReferentialConstraint>
@@ -148,7 +148,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Recipe__IdUser__300424B4">
+        <Association Name="FK__Recipe__IdUser__4316F928">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
           <ReferentialConstraint>
@@ -168,31 +168,31 @@
           <EntitySet Name="Moderator" EntityType="Self.Moderator" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Recipe" EntityType="Self.Recipe" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Comment__IdRecip__35BCFE0A" Association="Self.FK__Comment__IdRecip__35BCFE0A">
+          <AssociationSet Name="FK__Comment__IdRecip__48CFD27E" Association="Self.FK__Comment__IdRecip__48CFD27E">
             <End Role="Recipe" EntitySet="Recipe" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comment__IdUser__34C8D9D1" Association="Self.FK__Comment__IdUser__34C8D9D1">
+          <AssociationSet Name="FK__Comment__IdUser__47DBAE45" Association="Self.FK__Comment__IdUser__47DBAE45">
             <End Role="Users" EntitySet="Users" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Meal__IdCategory__267ABA7A" Association="Self.FK__Meal__IdCategory__267ABA7A">
+          <AssociationSet Name="FK__Meal__IdCategory__398D8EEE" Association="Self.FK__Meal__IdCategory__398D8EEE">
             <End Role="Category" EntitySet="Category" />
             <End Role="Meal" EntitySet="Meal" />
           </AssociationSet>
-          <AssociationSet Name="FK__Moderator__IdCat__2B3F6F97" Association="Self.FK__Moderator__IdCat__2B3F6F97">
+          <AssociationSet Name="FK__Moderator__IdCat__3E52440B" Association="Self.FK__Moderator__IdCat__3E52440B">
             <End Role="Category" EntitySet="Category" />
             <End Role="Moderator" EntitySet="Moderator" />
           </AssociationSet>
-          <AssociationSet Name="FK__Recipe__IdCatego__30F848ED" Association="Self.FK__Recipe__IdCatego__30F848ED">
+          <AssociationSet Name="FK__Recipe__IdCatego__440B1D61" Association="Self.FK__Recipe__IdCatego__440B1D61">
             <End Role="Category" EntitySet="Category" />
             <End Role="Recipe" EntitySet="Recipe" />
           </AssociationSet>
-          <AssociationSet Name="FK__Recipe__IdMeal__31EC6D26" Association="Self.FK__Recipe__IdMeal__31EC6D26">
+          <AssociationSet Name="FK__Recipe__IdMeal__44FF419A" Association="Self.FK__Recipe__IdMeal__44FF419A">
             <End Role="Meal" EntitySet="Meal" />
             <End Role="Recipe" EntitySet="Recipe" />
           </AssociationSet>
-          <AssociationSet Name="FK__Recipe__IdUser__300424B4" Association="Self.FK__Recipe__IdUser__300424B4">
+          <AssociationSet Name="FK__Recipe__IdUser__4316F928" Association="Self.FK__Recipe__IdUser__4316F928">
             <End Role="Users" EntitySet="Users" />
             <End Role="Recipe" EntitySet="Recipe" />
           </AssociationSet>
@@ -215,11 +215,11 @@
             <PropertyRef Name="IdCategory" />
           </Key>
           <Property Name="IdCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameCategory" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameCategory" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ImageCategory" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <NavigationProperty Name="Meal" Relationship="Self.FK__Meal__IdCategory__267ABA7A" FromRole="Category" ToRole="Meal" />
-          <NavigationProperty Name="Moderator" Relationship="Self.FK__Moderator__IdCat__2B3F6F97" FromRole="Category" ToRole="Moderator" />
-          <NavigationProperty Name="Recipe" Relationship="Self.FK__Recipe__IdCatego__30F848ED" FromRole="Category" ToRole="Recipe" />
+          <NavigationProperty Name="Meal" Relationship="Self.FK__Meal__IdCategory__398D8EEE" FromRole="Category" ToRole="Meal" />
+          <NavigationProperty Name="Moderator" Relationship="Self.FK__Moderator__IdCat__3E52440B" FromRole="Category" ToRole="Moderator" />
+          <NavigationProperty Name="Recipe" Relationship="Self.FK__Recipe__IdCatego__440B1D61" FromRole="Category" ToRole="Recipe" />
         </EntityType>
         <EntityType Name="Comment">
           <Key>
@@ -230,8 +230,8 @@
           <Property Name="DateComement" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IdUser" Type="Int32" Nullable="false" />
           <Property Name="IdRecipe" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Recipe" Relationship="Self.FK__Comment__IdRecip__35BCFE0A" FromRole="Comment" ToRole="Recipe" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Comment__IdUser__34C8D9D1" FromRole="Comment" ToRole="Users" />
+          <NavigationProperty Name="Recipe" Relationship="Self.FK__Comment__IdRecip__48CFD27E" FromRole="Comment" ToRole="Recipe" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Comment__IdUser__47DBAE45" FromRole="Comment" ToRole="Users" />
         </EntityType>
         <EntityType Name="Meal">
           <Key>
@@ -239,11 +239,11 @@
           </Key>
           <Property Name="IdMeal" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ImageMeal" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="NameMeal" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DescriptionMeal" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="NameMeal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DescriptionMeal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdCategory" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Category" Relationship="Self.FK__Meal__IdCategory__267ABA7A" FromRole="Meal" ToRole="Category" />
-          <NavigationProperty Name="Recipe" Relationship="Self.FK__Recipe__IdMeal__31EC6D26" FromRole="Meal" ToRole="Recipe" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Meal__IdCategory__398D8EEE" FromRole="Meal" ToRole="Category" />
+          <NavigationProperty Name="Recipe" Relationship="Self.FK__Recipe__IdMeal__44FF419A" FromRole="Meal" ToRole="Recipe" />
         </EntityType>
         <EntityType Name="Moderator">
           <Key>
@@ -255,7 +255,7 @@
           <Property Name="NikName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
           <Property Name="IdCategory" Type="Int32" />
-          <NavigationProperty Name="Category" Relationship="Self.FK__Moderator__IdCat__2B3F6F97" FromRole="Moderator" ToRole="Category" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Moderator__IdCat__3E52440B" FromRole="Moderator" ToRole="Category" />
         </EntityType>
         <EntityType Name="Recipe">
           <Key>
@@ -263,17 +263,17 @@
           </Key>
           <Property Name="IdRecipe" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ImageRecipe" Type="Binary" MaxLength="Max" FixedLength="false" />
-          <Property Name="NameRecipe" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Ingredient" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Description" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NameRecipe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ingredient" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Moder" Type="Boolean" Nullable="false" />
           <Property Name="IdUser" Type="Int32" />
           <Property Name="IdCategory" Type="Int32" />
           <Property Name="IdMeal" Type="Int32" />
-          <NavigationProperty Name="Category" Relationship="Self.FK__Recipe__IdCatego__30F848ED" FromRole="Recipe" ToRole="Category" />
-          <NavigationProperty Name="Comment" Relationship="Self.FK__Comment__IdRecip__35BCFE0A" FromRole="Recipe" ToRole="Comment" />
-          <NavigationProperty Name="Meal" Relationship="Self.FK__Recipe__IdMeal__31EC6D26" FromRole="Recipe" ToRole="Meal" />
-          <NavigationProperty Name="Users" Relationship="Self.FK__Recipe__IdUser__300424B4" FromRole="Recipe" ToRole="Users" />
+          <NavigationProperty Name="Category" Relationship="Self.FK__Recipe__IdCatego__440B1D61" FromRole="Recipe" ToRole="Category" />
+          <NavigationProperty Name="Comment" Relationship="Self.FK__Comment__IdRecip__48CFD27E" FromRole="Recipe" ToRole="Comment" />
+          <NavigationProperty Name="Meal" Relationship="Self.FK__Recipe__IdMeal__44FF419A" FromRole="Recipe" ToRole="Meal" />
+          <NavigationProperty Name="Users" Relationship="Self.FK__Recipe__IdUser__4316F928" FromRole="Recipe" ToRole="Users" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -284,10 +284,10 @@
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="NikName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="Comment" Relationship="Self.FK__Comment__IdUser__34C8D9D1" FromRole="Users" ToRole="Comment" />
-          <NavigationProperty Name="Recipe" Relationship="Self.FK__Recipe__IdUser__300424B4" FromRole="Users" ToRole="Recipe" />
+          <NavigationProperty Name="Comment" Relationship="Self.FK__Comment__IdUser__47DBAE45" FromRole="Users" ToRole="Comment" />
+          <NavigationProperty Name="Recipe" Relationship="Self.FK__Recipe__IdUser__4316F928" FromRole="Users" ToRole="Recipe" />
         </EntityType>
-        <Association Name="FK__Meal__IdCategory__267ABA7A">
+        <Association Name="FK__Meal__IdCategory__398D8EEE">
           <End Role="Category" Type="Self.Category" Multiplicity="1" />
           <End Role="Meal" Type="Self.Meal" Multiplicity="*" />
           <ReferentialConstraint>
@@ -299,7 +299,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Moderator__IdCat__2B3F6F97">
+        <Association Name="FK__Moderator__IdCat__3E52440B">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Moderator" Type="Self.Moderator" Multiplicity="*" />
           <ReferentialConstraint>
@@ -311,7 +311,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Recipe__IdCatego__30F848ED">
+        <Association Name="FK__Recipe__IdCatego__440B1D61">
           <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
           <ReferentialConstraint>
@@ -323,7 +323,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comment__IdRecip__35BCFE0A">
+        <Association Name="FK__Comment__IdRecip__48CFD27E">
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -335,7 +335,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Comment__IdUser__34C8D9D1">
+        <Association Name="FK__Comment__IdUser__47DBAE45">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Comment" Type="Self.Comment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -347,7 +347,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Recipe__IdMeal__31EC6D26">
+        <Association Name="FK__Recipe__IdMeal__44FF419A">
           <End Role="Meal" Type="Self.Meal" Multiplicity="0..1" />
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
           <ReferentialConstraint>
@@ -359,7 +359,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Recipe__IdUser__300424B4">
+        <Association Name="FK__Recipe__IdUser__4316F928">
           <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
           <End Role="Recipe" Type="Self.Recipe" Multiplicity="*" />
           <ReferentialConstraint>
@@ -379,31 +379,31 @@
           <EntitySet Name="Moderator" EntityType="Self.Moderator" />
           <EntitySet Name="Recipe" EntityType="Self.Recipe" />
           <EntitySet Name="Users" EntityType="Self.Users" />
-          <AssociationSet Name="FK__Meal__IdCategory__267ABA7A" Association="Self.FK__Meal__IdCategory__267ABA7A">
+          <AssociationSet Name="FK__Meal__IdCategory__398D8EEE" Association="Self.FK__Meal__IdCategory__398D8EEE">
             <End Role="Category" EntitySet="Category" />
             <End Role="Meal" EntitySet="Meal" />
           </AssociationSet>
-          <AssociationSet Name="FK__Moderator__IdCat__2B3F6F97" Association="Self.FK__Moderator__IdCat__2B3F6F97">
+          <AssociationSet Name="FK__Moderator__IdCat__3E52440B" Association="Self.FK__Moderator__IdCat__3E52440B">
             <End Role="Category" EntitySet="Category" />
             <End Role="Moderator" EntitySet="Moderator" />
           </AssociationSet>
-          <AssociationSet Name="FK__Recipe__IdCatego__30F848ED" Association="Self.FK__Recipe__IdCatego__30F848ED">
+          <AssociationSet Name="FK__Recipe__IdCatego__440B1D61" Association="Self.FK__Recipe__IdCatego__440B1D61">
             <End Role="Category" EntitySet="Category" />
             <End Role="Recipe" EntitySet="Recipe" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comment__IdRecip__35BCFE0A" Association="Self.FK__Comment__IdRecip__35BCFE0A">
+          <AssociationSet Name="FK__Comment__IdRecip__48CFD27E" Association="Self.FK__Comment__IdRecip__48CFD27E">
             <End Role="Recipe" EntitySet="Recipe" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Comment__IdUser__34C8D9D1" Association="Self.FK__Comment__IdUser__34C8D9D1">
+          <AssociationSet Name="FK__Comment__IdUser__47DBAE45" Association="Self.FK__Comment__IdUser__47DBAE45">
             <End Role="Users" EntitySet="Users" />
             <End Role="Comment" EntitySet="Comment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Recipe__IdMeal__31EC6D26" Association="Self.FK__Recipe__IdMeal__31EC6D26">
+          <AssociationSet Name="FK__Recipe__IdMeal__44FF419A" Association="Self.FK__Recipe__IdMeal__44FF419A">
             <End Role="Meal" EntitySet="Meal" />
             <End Role="Recipe" EntitySet="Recipe" />
           </AssociationSet>
-          <AssociationSet Name="FK__Recipe__IdUser__300424B4" Association="Self.FK__Recipe__IdUser__300424B4">
+          <AssociationSet Name="FK__Recipe__IdUser__4316F928" Association="Self.FK__Recipe__IdUser__4316F928">
             <End Role="Users" EntitySet="Users" />
             <End Role="Recipe" EntitySet="Recipe" />
           </AssociationSet>

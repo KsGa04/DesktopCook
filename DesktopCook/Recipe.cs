@@ -30,7 +30,7 @@ namespace DesktopCook
         public Nullable<int> IdCategory { get; set; }
         public Nullable<int> IdMeal { get; set; }
 
-        public Recipe(string NameRecipe, string Ingredient, string Description, byte[] ImageRecipe, int IdCategory, int IdMeal, int IdUser, bool Moder)
+        public Recipe(string NameRecipe, string Ingredient, string Description, byte[] ImageRecipe, int IdCategory, int IdMeal, int IdUser, bool moder)
         {
             this.NameRecipe = NameRecipe;
             this.Ingredient = Ingredient;
@@ -39,9 +39,8 @@ namespace DesktopCook
             this.IdCategory = IdCategory;
             this.IdMeal = IdMeal;
             this.IdUser = IdUser;
-            this.Moder = Moder;
+            this.Moder = moder;
         }
-
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comment { get; set; }
