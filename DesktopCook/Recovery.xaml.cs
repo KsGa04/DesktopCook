@@ -10,6 +10,9 @@ namespace DesktopCook
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// Отправка пароль на почту пользователя 
+        /// </summary>
         private void Recovery_Click(object sender, RoutedEventArgs e)
         {
             try

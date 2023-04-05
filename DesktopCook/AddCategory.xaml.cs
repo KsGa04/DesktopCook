@@ -1,5 +1,4 @@
 ﻿using Microsoft.Win32;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -16,6 +15,9 @@ namespace DesktopCook
             InitializeComponent();
             ListViewLoad();
         }
+        /// <summary>
+        /// Заполнение ListView данными из твблицы Category
+        /// </summary>
         public void ListViewLoad()
         {
             using (CookingBookEntities db = new CookingBookEntities())
@@ -25,7 +27,9 @@ namespace DesktopCook
                 Categ.ItemsSource = categories;
             }
         }
-
+        /// <summary>
+        /// Переходы между окнами
+        /// </summary>
         private void AddMeals_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AddMeals addMeals = new AddMeals();
@@ -78,6 +82,9 @@ namespace DesktopCook
             updateModerator.Show();
             this.Hide();
         }
+        /// <summary>
+        /// Возможность выбрать фотографию
+        /// </summary>
         private void ChoosePhoto_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -90,7 +97,9 @@ namespace DesktopCook
             MemoryStream ms = new MemoryStream(_image);
             ImageAccount.Source = BitmapFrame.Create(ms, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
         }
-
+        /// <summary>
+        /// Добавление новой категории в бд и вывод сообщения об успешном/не успешном добавлении
+        /// </summary>
         private void AddCategory_Click(object sender, RoutedEventArgs e)
         {
             using (CookingBookEntities db = new CookingBookEntities())

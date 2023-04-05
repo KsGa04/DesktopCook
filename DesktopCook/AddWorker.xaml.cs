@@ -15,7 +15,9 @@ namespace DesktopCook
                 Categ.Items.Add(d.NameCategory);
             }
         }
-
+        /// <summary>
+        /// Переходы между окнами 
+        /// </summary>
         private void AddCategory_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AddCategory addCategory = new AddCategory();
@@ -68,6 +70,9 @@ namespace DesktopCook
             updateModerator.Show();
             this.Hide();
         }
+        /// <summary>
+        /// Добавление работника в бд
+        /// </summary>
         private void AddWorker_Click(object sender, RoutedEventArgs e)
         {
             if ((Post.Text != null) && (Pass.Text != null))

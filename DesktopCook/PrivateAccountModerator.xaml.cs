@@ -19,7 +19,9 @@ namespace DesktopCook
             Post.Text = _moderator.Mail;
             Pass.Password = _moderator.Password;
         }
-
+        /// <summary>
+        /// Переходы между окнами
+        /// </summary>
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             Authorization authorization = new Authorization();
@@ -33,7 +35,9 @@ namespace DesktopCook
             accountModerator.Show();
             this.Hide();
         }
-
+        /// <summary>
+        /// Сохранение изменений в личном кабинете 
+        /// </summary>
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
             using (CookingBookEntities db = new CookingBookEntities())

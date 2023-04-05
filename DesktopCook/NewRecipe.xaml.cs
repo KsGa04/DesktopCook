@@ -23,6 +23,9 @@ namespace DesktopCook
             UpdateComment();
             FillImageBox();
         }
+        /// <summary>
+        /// Заполнение окна данными рецепта
+        /// </summary>
         private void FillImageBox()
         {
             using (CookingBookEntities db = new CookingBookEntities())
@@ -36,12 +39,18 @@ namespace DesktopCook
                 Ingr.Text = recipe.Ingredient;
             }
         }
+        /// <summary>
+        /// Обновление списка комментариев
+        /// </summary>
         private void UpdateComment()
         {
             _comment = _context.Comment.ToList();
             _comment = _comment.Where(x => x.IdRecipe == _recipe).ToList();
             ListComment.ItemsSource = _comment;
         }
+        /// <summary>
+        /// Переходы между окнами 
+        /// </summary>
         private void Main_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Glavnay glavnay = new Glavnay(_users);
@@ -76,7 +85,9 @@ namespace DesktopCook
             authorization.Show();
             this.Hide();
         }
-
+        /// <summary>
+        /// Добавление комментария при нажатие клавиши enter
+        /// </summary>
         private void Comment_KeyDown(object sender, KeyEventArgs e)
         {
             int id = _users.IdUser;

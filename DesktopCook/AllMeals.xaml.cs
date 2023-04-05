@@ -21,7 +21,9 @@ namespace DesktopCook
             _meals = _meals.Where(x => x.IdCategory == _category).ToList();
             ListMeals.ItemsSource = _meals;
         }
-
+        /// <summary>
+        /// Переходы между окнами
+        /// </summary>
         private void Main_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Glavnay glavnay = new Glavnay(_user);
@@ -56,6 +58,9 @@ namespace DesktopCook
             authorization.Show();
             this.Hide();
         }
+        /// <summary>
+        /// При нажатии на блок ListView происходит переход на другое окно с общим описанием блюда
+        /// </summary>
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (sender is ListViewItem item)

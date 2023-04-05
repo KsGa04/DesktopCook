@@ -25,7 +25,9 @@ namespace DesktopCook
             Pass.Password = users.Password;
         }
 
-
+        /// <summary>
+        /// Переходы между окнами 
+        /// </summary>
         private void Main_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Glavnay glavnay = new Glavnay(_users);
@@ -46,6 +48,9 @@ namespace DesktopCook
             authorization.Show();
             this.Hide();
         }
+        /// <summary>
+        /// Сохранение изменений в личном кабинете 
+        /// </summary>
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
             using (CookingBookEntities db = new CookingBookEntities())

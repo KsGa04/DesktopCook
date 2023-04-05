@@ -8,6 +8,9 @@ namespace DesktopCook
         {
             InitializeComponent();
         }
+        /// <summary>
+        /// Регистрация 
+        /// </summary>
         private void Registration_Click(object sender, RoutedEventArgs e)
         {
             if (textboxPass.Password.Length < 8)

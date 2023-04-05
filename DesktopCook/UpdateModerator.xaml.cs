@@ -22,6 +22,9 @@ namespace DesktopCook
                 Categ.Items.Add(d.NameCategory);
             }
         }
+        /// <summary>
+        /// Переходы между окнами 
+        /// </summary>
         private void AddCategory_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AddCategory addCategory = new AddCategory();
@@ -74,6 +77,9 @@ namespace DesktopCook
             updateModerator.Show();
             this.Hide();
         }
+        /// <summary>
+        /// Сохрание изменений о работнике
+        /// </summary>
         private void UpdateWorker_Click(object sender, RoutedEventArgs e)
         {
             if ((Post.Text != null) && (Pass.Text != null))
@@ -96,6 +102,9 @@ namespace DesktopCook
                 MessageBox.Show("Заполните поля Почты и Пароля");
             }
         }
+        /// <summary>
+        /// Получение данных о работнике с определенным Id
+        /// </summary>
         private void GetCategory_Click(object sender, RoutedEventArgs e)
         {
             try

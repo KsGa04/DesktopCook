@@ -21,7 +21,9 @@ namespace DesktopCook
                 Moder.ItemsSource = moderators;
             }
         }
-
+        /// <summary>
+        /// Переходы между окнами
+        /// </summary>
         private void AddCategory_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AddCategory addCategory = new AddCategory();
@@ -74,6 +76,9 @@ namespace DesktopCook
             updateModerator.Show();
             this.Hide();
         }
+        /// <summary>
+        /// Удаление работника из бд 
+        /// </summary>
         private void RemoveModerator_Click(object sender, RoutedEventArgs e)
         {
             if (Moder.SelectedIndex >= 0)

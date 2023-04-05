@@ -28,6 +28,9 @@ namespace DesktopCook
             textboxId.IsEnabled = true;
             GetInformation.IsEnabled = true;
         }
+        /// <summary>
+        /// Заполнение ListView категориями
+        /// </summary>
         public void ListViewLoad()
         {
             using (CookingBookEntities db = new CookingBookEntities())
@@ -37,7 +40,9 @@ namespace DesktopCook
                 Meals.ItemsSource = moderators;
             }
         }
-
+        /// <summary>
+        /// Переходы между окнами 
+        /// </summary>
         private void AddMeals_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AddMeals addMeals = new AddMeals();
@@ -90,6 +95,9 @@ namespace DesktopCook
             updateModerator.Show();
             this.Hide();
         }
+        /// <summary>
+        /// Возможность выбрать фото
+        /// </summary>
         private void ChoosePhoto_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -102,7 +110,9 @@ namespace DesktopCook
             MemoryStream ms = new MemoryStream(_image);
             ImageMeals.Source = BitmapFrame.Create(ms, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
         }
-
+        /// <summary>
+        /// Сохрание изменений о блюде
+        /// </summary>
         private void UpdateMeals_Click(object sender, RoutedEventArgs e)
         {
             if ((Name.Text != "") && (Desc.Text != "") && (Categ.SelectedItem != null))
@@ -119,6 +129,9 @@ namespace DesktopCook
                 MessageBox.Show("Заполните все поля");
             }
         }
+        /// <summary>
+        /// Получение данных о блюде с определенным Id
+        /// </summary>
         private void GetMeals_Click(object sender, RoutedEventArgs e)
         {
             try

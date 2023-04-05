@@ -22,6 +22,9 @@ namespace DesktopCook
             _recipe = _recipe.Where(x => x.IdCategory == id && x.Moder == false).ToList();
             LstRecipe.ItemsSource = _recipe;
         }
+        /// <summary>
+        /// Переходы между окнами
+        /// </summary>
         private void PrivateAccountModerator_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             PrivateAccountModerator accountModerator = new PrivateAccountModerator(_moderator);
@@ -35,7 +38,9 @@ namespace DesktopCook
             authorization.Show();
             this.Hide();
         }
-
+        /// <summary>
+        /// При нажатии на блок ListView происходит переход на другое окно для проверки рецепта (модерация)
+        /// </summary>
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (sender is ListViewItem item)

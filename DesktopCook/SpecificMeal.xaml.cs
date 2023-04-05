@@ -26,6 +26,9 @@ namespace DesktopCook
             ListRecipe.ItemsSource = _recipe;
             FillImageBox();
         }
+        /// <summary>
+        /// Заполнение окна данными о блюде
+        /// </summary>
         private void FillImageBox()
         {
             using (CookingBookEntities db = new CookingBookEntities())
@@ -38,6 +41,9 @@ namespace DesktopCook
                 Desc.Text = meal.DescriptionMeal;
             }
         }
+        /// <summary>
+        /// Переходы между окнами 
+        /// </summary>
         private void MyRecipes_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MyRecipes myRecipes = new MyRecipes(_user);
@@ -79,7 +85,9 @@ namespace DesktopCook
             addRecipe.Show();
             this.Hide();
         }
-
+        /// <summary>
+        /// При нажатии на блок ListView происходит переход на другое окно с общим описанием рецепта
+        /// </summary>
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (sender is ListViewItem item)

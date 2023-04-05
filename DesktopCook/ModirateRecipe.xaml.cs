@@ -18,6 +18,9 @@ namespace DesktopCook
             _moderator = moderator;
             FillImageBox();
         }
+        /// <summary>
+        /// Заполнение textbox и ImageRecipe данными определенного рецепта
+        /// </summary>
         private void FillImageBox()
         {
             using (CookingBookEntities db = new CookingBookEntities())
@@ -31,7 +34,9 @@ namespace DesktopCook
                 Ingr.Text = recipe.Ingredient;
             }
         }
-
+        /// <summary>
+        /// Переходы между окнами
+        /// </summary>
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             Authorization authorization = new Authorization();
@@ -52,7 +57,9 @@ namespace DesktopCook
             listRecipe.Show();
             this.Hide();
         }
-
+        /// <summary>
+        /// Одобрение рецепта модератором 
+        /// </summary>
         private void Approve_Click(object sender, RoutedEventArgs e)
         {
                 using (CookingBookEntities db = new CookingBookEntities())
@@ -66,7 +73,9 @@ namespace DesktopCook
                 }
                 MessageBox.Show("Запись обновлена");
         }
-
+        /// <summary>
+        /// Не одобрение рецепта модератором
+        /// </summary>
         private void Disapprove_Click(object sender, RoutedEventArgs e)
         {
             using (CookingBookEntities db = new CookingBookEntities())

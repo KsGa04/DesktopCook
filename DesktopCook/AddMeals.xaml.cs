@@ -25,17 +25,21 @@ namespace DesktopCook
                 Categ.Items.Add(d.NameCategory);
             }
         }
-
+        /// <summary>
+        /// Заполнение ListView данными из таблицы Meal
+        /// </summary>
         public void ListViewLoad()
         {
             using (CookingBookEntities db = new CookingBookEntities())
             {
-                var moderators = db.Meal.ToList();
+                var meals = db.Meal.ToList();
 
-                Meals.ItemsSource = moderators;
+                Meals.ItemsSource = meals;
             }
         }
-
+        /// <summary>
+        /// Переходы между окнами
+        /// </summary>
         private void AddMeals_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             AddMeals addMeals = new AddMeals();
@@ -88,6 +92,9 @@ namespace DesktopCook
             updateModerator.Show();
             this.Hide();
         }
+        /// <summary>
+        /// Возможность выбрать фото
+        /// </summary>
         private void ChoosePhoto_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -100,7 +107,9 @@ namespace DesktopCook
             MemoryStream ms = new MemoryStream(_image);
             ImageAccount.Source = BitmapFrame.Create(ms, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
         }
-
+        /// <summary>
+        /// Добавление Блюда в таблицу
+        /// </summary>
         private void AddMeals_Click(object sender, RoutedEventArgs e)
         {
             if ((Name.Text != "") && (Desc.Text != "") && (Categ.SelectedItem != null))
@@ -118,7 +127,9 @@ namespace DesktopCook
                 MessageBox.Show("Заполните все поля");
             }
         }
-
+        /// <summary>
+        /// Удаление блюда из таблицы
+        /// </summary>
         private void RemoveMeal_Click(object sender, RoutedEventArgs e)
         {
             if (Meals.SelectedIndex >= 0)

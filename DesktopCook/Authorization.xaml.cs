@@ -9,7 +9,9 @@ namespace DesktopCook
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// Переходы между окнами
+        /// </summary>
         private void Registration_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Registration registration = new Registration();
@@ -23,7 +25,9 @@ namespace DesktopCook
             recovery.Show();
             this.Hide();
         }
-
+        /// <summary>
+        /// Авторизация и проверка данных из бд
+        /// </summary>
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             using (CookingBookEntities db = new CookingBookEntities())

@@ -12,12 +12,17 @@ namespace DesktopCook
             InitializeComponent();
             _users = user;
         }
+        /// <summary>
+        /// Переход на страницу из интернета
+        /// </summary>
         private void Hyperlink_RequestNavigate(object sender, System.Windows.Navigation.RequestNavigateEventArgs e)
         {
             Process.Start(new ProcessStartInfo(e.Uri.AbsoluteUri));
             e.Handled = true;
         }
-
+        /// <summary>
+        /// Переходы между окнами 
+        /// </summary>
         private void Main_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Glavnay glavnay = new Glavnay(_users);

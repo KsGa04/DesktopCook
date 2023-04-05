@@ -169,14 +169,8 @@
     <Compile Include="UpdateMyRecipe.xaml.cs">
       <DependentUpon>UpdateMyRecipe.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControl1.xaml.cs">
-      <DependentUpon>UserControl1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -299,14 +293,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UpdateMyRecipe.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControl1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

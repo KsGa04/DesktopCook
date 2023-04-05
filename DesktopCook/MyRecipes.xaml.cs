@@ -22,6 +22,9 @@ namespace DesktopCook
             _recipe = _recipe.Where(x => x.IdUser == id).ToList();
             ListRecipe.ItemsSource = _recipe;
         }
+        /// <summary>
+        /// Переходы между окнами
+        /// </summary>
         private void Main_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Glavnay glavnay = new Glavnay(_user);
@@ -56,7 +59,9 @@ namespace DesktopCook
             authorization.Show();
             this.Hide();
         }
-
+        /// <summary>
+        /// Удаление рецепта 
+        /// </summary>
         private void RemoveRecipe_Click(object sender, RoutedEventArgs e)
         {
             if (ListRecipe.SelectedIndex >= 0)
@@ -82,6 +87,9 @@ namespace DesktopCook
                 }
             }
         }
+        /// <summary>
+        /// Заполнение ListView рецептами определенного пользователя
+        /// </summary>
         public void FillListRecipe()
         {
             id = _user.IdUser;
@@ -89,6 +97,9 @@ namespace DesktopCook
             _recipe = _recipe.Where(x => x.IdUser == id).ToList();
             ListRecipe.ItemsSource = _recipe;
         }
+        /// <summary>
+        /// При нажатии на блок ListView происходит переход на другое окно с возможностью редактирования рецепта
+        /// </summary>
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (sender is ListViewItem item)

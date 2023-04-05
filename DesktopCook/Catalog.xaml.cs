@@ -7,7 +7,9 @@ using System.Windows.Input;
 namespace DesktopCook
 {
     public partial class Catalog : Window
-    {
+    {/// <summary>
+    /// 
+    /// </summary>
         private CookingBookEntities _context = new CookingBookEntities();
         private List<Category> _category = new List<Category>();
         private Users _users;
@@ -19,6 +21,9 @@ namespace DesktopCook
             _category = _context.Category.ToList();
             ListCategory.ItemsSource = _category;
         }
+        /// <summary>
+        /// Переходы между окнами
+        /// </summary>
         private void Main_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Glavnay glavnay = new Glavnay(_users);
@@ -53,6 +58,9 @@ namespace DesktopCook
             authorization.Show();
             this.Hide();
         }
+        /// <summary>
+        /// При нажатии на блок ListView происходит переход на другое окно со списком блюд данной категории
+        /// </summary>
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             if (sender is ListViewItem item)

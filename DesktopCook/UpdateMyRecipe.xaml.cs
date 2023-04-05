@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -22,6 +21,9 @@ namespace DesktopCook
             _id = id;
             FillImageBox();
         }
+        /// <summary>
+        /// Переходы между окнами 
+        /// </summary>
         private void Main_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Glavnay glavnay = new Glavnay(_user);
@@ -56,6 +58,9 @@ namespace DesktopCook
             authorization.Show();
             this.Hide();
         }
+        /// <summary>
+        /// Заполнение окна данными о рецепте
+        /// </summary>
         private void FillImageBox()
         {
             using (CookingBookEntities db = new CookingBookEntities())
@@ -69,6 +74,9 @@ namespace DesktopCook
                 Ingr.Text = recipe.Ingredient;
             }
         }
+        /// <summary>
+        /// Возможность выбрать фото
+        /// </summary>
         private void Choose_A_Photo_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -81,6 +89,9 @@ namespace DesktopCook
             MemoryStream ms = new MemoryStream(_image);
             ImageAccount.Source = BitmapFrame.Create(ms, BitmapCreateOptions.None, BitmapCacheOption.OnLoad);
         }
+        /// <summary>
+        /// Сохрание изменений о рецепте
+        /// </summary>
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
             _userId = _user.IdUser;

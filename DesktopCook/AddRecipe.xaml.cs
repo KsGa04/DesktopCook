@@ -28,7 +28,9 @@ namespace DesktopCook
                 Dish.Items.Add(i.NameMeal);
             }
         }
-
+        /// <summary>
+        /// Переходы между окнами
+        /// </summary>
         private void Main_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             Glavnay glavnay = new Glavnay(_users);
@@ -56,7 +58,9 @@ namespace DesktopCook
             myRecipes.Show();
             this.Hide();
         }
-
+        /// <summary>
+        /// Возможность выбрать фото
+        /// </summary>
         private void Choose_A_Photo_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
@@ -76,7 +80,9 @@ namespace DesktopCook
             authorization.Show();
             this.Hide();
         }
-
+        /// <summary>
+        /// Добавление рецепта в бд
+        /// </summary>
         private void AddRecipe_Click(object sender, RoutedEventArgs e)
         {
             id = _users.IdUser;
