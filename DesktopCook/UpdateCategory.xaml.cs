@@ -114,7 +114,10 @@ namespace DesktopCook
             {
                 if (Name.Text != "")
                 {
-                    Category category = new Category(Name.Text, _image);
+                    id = Convert.ToInt32(textboxId.Text);
+                    Category category = db.Category.FirstOrDefault(x => x.IdCategory == id);
+                    category.ImageCategory = _image;
+                    category.NameCategory = Name.Text;
                     db.SaveChanges();
                     MessageBox.Show("Запись обновлена");
                 }
@@ -123,6 +126,7 @@ namespace DesktopCook
                     MessageBox.Show("Заполните все окна");
                 }
             }
+            ListViewLoad();
         }
         /// <summary>
         /// Получение данных о категории с определенным Id

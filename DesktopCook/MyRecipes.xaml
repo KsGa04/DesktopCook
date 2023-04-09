@@ -52,7 +52,7 @@
             </Grid>
         </Border>
         <Label Content="Мои рецепты" FontSize="26" Margin="60,0" Grid.Row="1"/>
-        <Button Content="Удалить" Grid.Row="1" VerticalAlignment="Top" Margin="780,10,60,0" Click="RemoveRecipe_Click"/>
+        <Button Content="Удалить" Grid.Row="1" VerticalAlignment="Top" Margin="780,10,20,0" Click="RemoveRecipe_Click"/>
         <ListView x:Name="ListRecipe" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Margin="20,68,20,0" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>

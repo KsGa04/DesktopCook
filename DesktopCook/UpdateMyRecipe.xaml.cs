@@ -10,6 +10,7 @@ namespace DesktopCook
 {
     public partial class UpdateMyRecipe : Window
     {
+        private CookingBookEntities _db = new CookingBookEntities();
         private byte[] _image;
         private Users _user;
         private int _id;
@@ -20,6 +21,14 @@ namespace DesktopCook
             _user = users;
             _id = id;
             FillImageBox();
+            foreach (var d in _db.Category)
+            {
+                Categ.Items.Add(d.NameCategory);
+            }
+            foreach (var i in _db.Meal)
+            {
+                Dish.Items.Add(i.NameMeal);
+            }
         }
         /// <summary>
         /// Переходы между окнами 
@@ -99,7 +108,15 @@ namespace DesktopCook
             {
                 using (CookingBookEntities db = new CookingBookEntities())
                 {
-                    Recipe recipe = new Recipe(Name.Text, Ingr.Text, Desc.Text, _image, Convert.ToInt32(Categ.SelectedIndex + 1), Convert.ToInt32(Dish.SelectedIndex + 1), _userId, false);
+                    Recipe recipe = db.Recipe.FirstOrDefault(x => x.IdRecipe == _id);
+                    recipe.ImageRecipe = _image;
+                    recipe.NameRecipe = Name.Text;
+                    recipe.Description = Desc.Text;
+                    recipe.Ingredient = Ingr.Text;
+                    recipe.Moder = false;
+                    recipe.IdCategory = Convert.ToInt32(Categ.SelectedIndex + 1);
+                    recipe.IdMeal = Convert.ToInt32(Dish.SelectedIndex + 1);
+                    recipe.IdUser = _userId;
                     db.SaveChanges();
                 }
                 MessageBox.Show("Запись обновлена");

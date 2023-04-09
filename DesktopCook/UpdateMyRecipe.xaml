@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopCook"
         mc:Ignorable="d" Icon="https://i.pinimg.com/originals/89/d3/3d/89d33d1c65dbe9c6a994da1a59cb32d3.png"
-        Title="Редактирование рецепта" Height="620" Width="1024" MinHeight="620" MaxHeight="620" MinWidth="1024" MaxWidth="1024">
+        Title="Редактирование рецепта" Height="640" Width="1070" MinHeight="640" MaxHeight="640" MinWidth="1070" MaxWidth="1070">
     <Window.Resources>
         <Style TargetType="TextBlock" x:Key="header">
             <Setter Property="FontSize" Value="16"/>
@@ -66,17 +66,26 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button Grid.Column="0" Content="Выбрать фото" HorizontalAlignment="Center" Margin="0,0,0,450" Click="Choose_A_Photo_Click"/>
-            <Border Grid.Column="0" Width="280" Height="400" Margin="23,102,24,32" BorderThickness="1" BorderBrush="Black">
-                <Image x:Name="ImageAccount" Margin="0,0,8,0"/>
+            <Border Grid.Column="0" Width="280" Height="320" Margin="15,50,24,32" BorderThickness="1" BorderBrush="Black">
+                <Image x:Name="ImageAccount"/>
             </Border>
-            <TextBox Text="Название рецепта" Grid.Column="1" Margin="28,10,28,488" Width="280" x:Name="Name"/>
-            <TextBlock Text="Выберите категорию" FontSize="16" Grid.Column="1" Width="280" Height="40" Margin="38,61,38,433"/>
-            <ComboBox Grid.Column="1" FontSize="16" Width="280" Height="40" x:Name="Categ" Margin="38,102,38,392"/>
-            <TextBlock Text="Выберите блюдо" FontSize="16" Grid.Column="1" Width="280" Height="40" Margin="38,149,38,345"/>
-            <ComboBox Grid.Column="1" FontSize="16" x:Name="Dish" Height="40" Width="280" Margin="38,194,38,300"/>
-            <TextBox x:Name="Ingr" Text="Ингредиенты" Width="300" Grid.Column="1" Height="200" Margin="0,255,0,79" TextWrapping="Wrap"></TextBox>
-            <Button Content="Сохранить" Grid.Column="1" Click="SaveChanges_Click" Margin="78,477,78,21"/>
-            <TextBox Text="Описание" Width="280" Height="450" Grid.Column="2" Margin="24,55,23,17" TextWrapping="Wrap" x:Name="Desc"/>
+            <TextBox Text="Название рецепта" Grid.Column="2" Width="280" Height="35" x:Name="Name" Foreground="Black" Margin="34,24,33,465"  />
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Выберите категорию" FontSize="16" Grid.Row="0"  Width="280" Height="45" VerticalAlignment="Top"/>
+                <ComboBox Grid.Row="0" FontSize="16" x:Name="Categ" Width="280" Height="35" VerticalAlignment="Center"/>
+                <TextBlock Text="Выберите блюдо" FontSize="16" Grid.Row="1" Height="35" Width="280" VerticalAlignment="Top"/>
+                <ComboBox Grid.Row="1" FontSize="16" x:Name="Dish" Height="35" Width="280" VerticalContentAlignment="Center"/>
+                <TextBox x:Name="Ingr" Text="Ингредиенты" Grid.Row="2" Grid.RowSpan="2" Height="200" Width="300" TextWrapping="Wrap"></TextBox>
+                <Button Content="Сохранить" Grid.Row="4"  Click="SaveChanges_Click" VerticalAlignment="Center"/>
+            </Grid>
+            <TextBox Text="Описание" Width="280" Grid.Column="2" Margin="39,112,38,104" Height="320" TextWrapping="Wrap" x:Name="Desc"/>
         </Grid>
     </Grid>
 </Window>

@@ -68,9 +68,9 @@
             <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Width="278" Height="181" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,26,0,0">
                 <Image x:Name="ImageRecipe"/>
             </Border>
-            <TextBox x:Name="Ingr" Grid.Row="0" Margin="29,232,34,10" TextWrapping="Wrap" Width="270" Height="270"/>
+            <TextBox x:Name="Ingr" Grid.Row="0" Margin="29,232,34,10" TextAlignment="Justify" TextWrapping="Wrap" Width="270" Height="270"/>
             <TextBox x:Name="Name" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2" Margin="341,26,0,0" TextWrapping="Wrap" Width="332"/>
-            <TextBox x:Name="Desc" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,87,0,0" Height="417" Width="321" Grid.Column="1" FontSize="16" TextWrapping="Wrap"/>
+            <TextBox x:Name="Desc" HorizontalAlignment="Center" TextAlignment="Justify" VerticalAlignment="Top" Margin="0,87,0,0" Height="417" Width="321" Grid.Column="1" FontSize="16" TextWrapping="Wrap"/>
             <Button Content="Одобрить" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Approve_Click" Margin="0,100"/>
             <Button Content="Не одобрять" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Disapprove_Click"/>
         </Grid>

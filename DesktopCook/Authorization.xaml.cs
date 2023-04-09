@@ -77,6 +77,10 @@ namespace DesktopCook
                     }
                     MessageBox.Show("Логин или пароль указан неверно!");
                 }
+                else
+                {
+                    MessageBox.Show("Выберите роль!");
+                }
 
             }
         }

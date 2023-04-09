@@ -53,16 +53,23 @@ namespace DesktopCook
         /// </summary>
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
-            using (CookingBookEntities db = new CookingBookEntities())
+            if (Post.Text != "" && Pass.Password != "")
             {
-                Users user = db.Users.FirstOrDefault(x => x.IdUser == id);
-                user.NikName = Nikname.Text;
-                user.DateOfBirth = System.DateTime.Parse(DateBirth.Text);
-                user.Mail = Post.Text;
-                user.Password = Pass.Password;
-                db.SaveChanges();
+                using (CookingBookEntities db = new CookingBookEntities())
+                {
+                    Users user = db.Users.FirstOrDefault(x => x.IdUser == id);
+                    user.NikName = Nikname.Text;
+                    user.DateOfBirth = System.DateTime.Parse(DateBirth.Text);
+                    user.Mail = Post.Text;
+                    user.Password = Pass.Password;
+                    db.SaveChanges();
+                }
+                MessageBox.Show("Запись обновлена");
             }
-            MessageBox.Show("Запись обновлена");
+            else
+            {
+                MessageBox.Show("Введите логин и пароль!");
+            }
         }
 
         private void AddRecipe_Click(object sender, RoutedEventArgs e)

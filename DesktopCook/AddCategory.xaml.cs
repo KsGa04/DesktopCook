@@ -116,6 +116,7 @@ namespace DesktopCook
                     MessageBox.Show("Заполните все окна");
                 }
             }
+            ListViewLoad();
         }
 
         private void RemoveCategory_Click(object sender, RoutedEventArgs e)
