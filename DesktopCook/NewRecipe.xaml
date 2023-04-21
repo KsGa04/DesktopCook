@@ -60,7 +60,7 @@
             <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Width="278" Height="181" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,26,0,0">
                 <Image x:Name="ImageRecipe"/>
             </Border>
-            <TextBlock x:Name="Ingr" Grid.Row="0" Margin="29,232,34,10" TextWrapping="Wrap" TextAlignment="Justify"/>
+            <TextBlock x:Name="Ingr" Grid.Row="0" Margin="29,232,34,10" TextWrapping="Wrap" TextAlignment="Justify" FontSize="16"/>
             <TextBlock x:Name="Name" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2" Margin="341,26,0,0" TextWrapping="Wrap" Width="332"/>
             <TextBlock x:Name="Desc" TextAlignment="Justify" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,87,0,0" Height="417" Width="321" Grid.Column="1" FontSize="16" TextWrapping="Wrap"/>
             <TextBlock Grid.Column="2" Text="Комментарии" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,26,0,0"/>

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DesktopCook"
+        xmlns:local="clr-namespace:DesktopCook" 
         mc:Ignorable="d"
         Title="Обновить Категорию" Height="620" Width="1024" MinHeight="620" MaxHeight="620" MinWidth="1024" MaxWidth="1024">
     <Window.Resources>

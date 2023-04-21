@@ -1,6 +1,5 @@
 ﻿using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
@@ -107,24 +106,27 @@ namespace DesktopCook
         /// <summary>
         /// Сохрание изменений о категории
         /// </summary>
-
-        private void UpdateCategory_Click(object sender, RoutedEventArgs e)
+        public static void UpdateCategories(int id, string name, byte[] image)
         {
             using (CookingBookEntities db = new CookingBookEntities())
             {
+                Category category = db.Category.FirstOrDefault(x => x.IdCategory == id);
+                category.ImageCategory = image;
+                category.NameCategory = name;
+                db.SaveChanges();
+            }
+        }
+        private void UpdateCategory_Click(object sender, RoutedEventArgs e)
+        {
                 if (Name.Text != "")
                 {
                     id = Convert.ToInt32(textboxId.Text);
-                    Category category = db.Category.FirstOrDefault(x => x.IdCategory == id);
-                    category.ImageCategory = _image;
-                    category.NameCategory = Name.Text;
-                    db.SaveChanges();
+                    UpdateCategories(id, Name.Text, _image);
                     MessageBox.Show("Запись обновлена");
                 }
                 else
                 {
                     MessageBox.Show("Заполните все окна");
-                }
             }
             ListViewLoad();
         }

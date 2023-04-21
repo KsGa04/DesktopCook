@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -9,11 +10,14 @@ namespace DesktopCook
 {
     public partial class AddCategory : Window
     {
+        public ListView categ;
         private byte[] _image;
         public AddCategory()
         {
             InitializeComponent();
             ListViewLoad();
+            categ = Categ;
+            MessageBox.Show(categ.Items.Count.ToString());
         }
         /// <summary>
         /// Заполнение ListView данными из твблицы Category
@@ -100,15 +104,22 @@ namespace DesktopCook
         /// <summary>
         /// Добавление новой категории в бд и вывод сообщения об успешном/не успешном добавлении
         /// </summary>
+        public static void AddCategories(string name, byte[] image)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Category category = new Category(name, image);
+                db.Category.Add(category);
+                db.SaveChanges();
+            }
+        }
         private void AddCategory_Click(object sender, RoutedEventArgs e)
         {
             using (CookingBookEntities db = new CookingBookEntities())
             {
                 if (Name.Text != "")
                 {
-                    Category category = new Category(Name.Text, _image);
-                    db.Category.Add(category);
-                    db.SaveChanges();
+                    AddCategories(Name.Text, _image);
                     MessageBox.Show("Запись добавлена");
                 }
                 else
@@ -118,7 +129,15 @@ namespace DesktopCook
             }
             ListViewLoad();
         }
-
+        public static void RemoveCategories(int id)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Category category = db.Category.Where(x => x.IdCategory == id).FirstOrDefault();
+                db.Category.Remove(category);
+                db.SaveChanges();
+            }
+        }
         private void RemoveCategory_Click(object sender, RoutedEventArgs e)
         {
             if (Categ.SelectedIndex >= 0)
@@ -129,13 +148,7 @@ namespace DesktopCook
                 {
                     var item = Categ.SelectedItem as Category;
                     int id = item.IdCategory;
-                    using (CookingBookEntities db = new CookingBookEntities())
-                    {
-                        Category category = db.Category.Where(x => x.IdCategory == id).FirstOrDefault();
-
-                        db.Category.Remove(category);
-                        db.SaveChanges();
-                    }
+                    RemoveCategories(id);
                 }
             }
             else
