@@ -29,22 +29,22 @@ namespace DesktopCook
         public Nullable<int> IdUser { get; set; }
         public Nullable<int> IdCategory { get; set; }
         public Nullable<int> IdMeal { get; set; }
-
-        public Recipe(string NameRecipe, string Ingredient, string Description, byte[] ImageRecipe, int IdCategory, int IdMeal, int IdUser, bool moder)
-        {
-            this.NameRecipe = NameRecipe;
-            this.Ingredient = Ingredient;
-            this.Description = Description;
-            this.ImageRecipe = ImageRecipe;
-            this.IdCategory = IdCategory;
-            this.IdMeal = IdMeal;
-            this.IdUser = IdUser;
-            this.Moder = moder;
-        }
+    
         public virtual Category Category { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Comment> Comment { get; set; }
         public virtual Meal Meal { get; set; }
         public virtual Users Users { get; set; }
+        public Recipe(string Name, string Ingr, string Desc, byte[] Image, int IdCateg, int IdMeal, int IdUser, bool Moder)
+        {
+            this.NameRecipe = Name;
+            this.ImageRecipe = Image;
+            this.Ingredient = Ingr;
+            this.Description = Desc;
+            this.IdCategory = IdCateg;
+            this.IdMeal = IdMeal;
+            this.IdUser = IdUser;
+            this.Moder = Moder;
+        }
     }
 }

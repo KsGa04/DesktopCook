@@ -53,6 +53,7 @@
         </Border>
         <Label Content="Мои рецепты" FontSize="26" Margin="60,0" Grid.Row="1"/>
         <Button Content="Удалить" Grid.Row="1" VerticalAlignment="Top" Margin="780,10,20,0" Click="RemoveRecipe_Click"/>
+        <Button Content="Изменить" x:Name="Update" Grid.Row="1" VerticalAlignment="Top" Margin="480,10,344,0" Click="Update_Click"/>
         <ListView x:Name="ListRecipe" HorizontalContentAlignment="Center" ScrollViewer.HorizontalScrollBarVisibility="Disabled" Grid.Row="1" Margin="20,68,20,0" d:ItemsSource="{d:SampleData ItemCount=5}">
             <ListView.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -77,11 +78,6 @@
                     </Border>
                 </DataTemplate>
             </ListView.ItemTemplate>
-            <ListView.ItemContainerStyle>
-                <Style TargetType="ListViewItem">
-                    <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown"/>
-                </Style>
-            </ListView.ItemContainerStyle>
         </ListView>
     </Grid>
 </Window>

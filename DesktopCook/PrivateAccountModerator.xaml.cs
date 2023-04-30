@@ -35,6 +35,12 @@ namespace DesktopCook
             accountModerator.Show();
             this.Hide();
         }
+        private void ModirateComment_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ModirateComment modirate = new ModirateComment(_moderator);
+            modirate.Show();
+            this.Hide();
+        }
         /// <summary>
         /// Сохранение изменений в личном кабинете 
         /// </summary>

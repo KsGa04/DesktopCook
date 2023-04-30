@@ -96,6 +96,10 @@ namespace DesktopCook
                 }
                 MessageBox.Show("Запись добавлена");
             }
+            else
+            {
+                MessageBox.Show("Заполните все поля");
+            }
         }
     }
 }

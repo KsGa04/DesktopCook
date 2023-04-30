@@ -25,17 +25,18 @@ namespace DesktopCook
         public int IdCategory { get; set; }
         public string NameCategory { get; set; }
         public byte[] ImageCategory { get; set; }
-        public Category(string NameCategory, byte[] ImageCategory)
-        {
-            this.NameCategory = NameCategory;
-            this.ImageCategory = ImageCategory;
-        }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Meal> Meal { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Moderator> Moderator { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Recipe> Recipe { get; set; }
+        public Category(string NameCategory, byte[] ImageCategory)
+        {
+            this.NameCategory = NameCategory;
+            this.ImageCategory = ImageCategory;
+        }
+
     }
 }

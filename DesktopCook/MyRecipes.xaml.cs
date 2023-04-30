@@ -100,17 +100,14 @@ namespace DesktopCook
         /// <summary>
         /// При нажатии на блок ListView происходит переход на другое окно с возможностью редактирования рецепта
         /// </summary>
-        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            if (sender is ListViewItem item)
-            {
-                var product = item.Content as Recipe;
-                int id = product.IdRecipe;
-                UpdateMyRecipe allMeals = new UpdateMyRecipe(_user, id);
-                allMeals.Show();
-                this.Hide();
 
-            }
+        private void Update_Click(object sender, RoutedEventArgs e)
+        {
+            var item = ListRecipe.SelectedItem as Recipe;
+            int id = item.IdRecipe;
+            UpdateMyRecipe allMeals = new UpdateMyRecipe(_user, id);
+            allMeals.Show();
+            this.Hide();
         }
     }
 }

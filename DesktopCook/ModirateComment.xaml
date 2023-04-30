@@ -1,11 +1,11 @@
-﻿<Window x:Class="DesktopCook.ModirateRecipe"
+﻿<Window x:Class="DesktopCook.ModirateComment"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DesktopCook"
-        mc:Ignorable="d" Icon="https://i.pinimg.com/originals/89/d3/3d/89d33d1c65dbe9c6a994da1a59cb32d3.png"
-        Title="Модерация рецепта" Height="620" Width="1024" MinHeight="60" MaxHeight="620" MinWidth="1024" MaxWidth="1024">
+        mc:Ignorable="d"
+        Title="ModirateComment" Height="620" Width="1024" MinHeight="60" MaxHeight="620" MinWidth="1024" MaxWidth="1024">
     <Window.Resources>
         <Style TargetType="TextBlock" x:Key="header">
             <Setter Property="FontSize" Value="16"/>
@@ -61,19 +61,23 @@
             </Grid>
         </Border>
         <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Border BorderBrush="Black" BorderThickness="1" Grid.Column="0" Width="278" Height="181" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="29,26,0,0">
-                <Image x:Name="ImageRecipe"/>
-            </Border>
-            <TextBox x:Name="Ingr" Grid.Row="0" Margin="29,232,34,10" TextAlignment="Justify" TextWrapping="Wrap" Width="270" Height="270"/>
-            <TextBox x:Name="Name" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2" Margin="341,26,0,0" TextWrapping="Wrap" Width="332"/>
-            <TextBox x:Name="Desc" HorizontalAlignment="Center" TextAlignment="Justify" VerticalAlignment="Top" Margin="0,87,0,0" Height="417" Width="321" Grid.Column="1" FontSize="16" TextWrapping="Wrap"/>
-            <Button Content="Одобрить" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Approve_Click" Margin="0,100"/>
-            <Button Content="Не одобрять" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Disapprove_Click"/>
+            <Label Content="Комментарии" FontSize="24" Grid.Row="1" Width="200" Margin="87,10,737,438"/>
+            <Button Content="Удалить" Grid.Row="1" VerticalAlignment="Top" Margin="780,10,20,0" Click="RemoveRecipe_Click"/>
+            <Button Content="Изменить" x:Name="Update" Grid.Row="1" VerticalAlignment="Top" Margin="480,10,344,0" Click="Update_Click"/>
+            <TextBox VerticalAlignment="Top" x:Name="TextComment" HorizontalAlignment="Right" Width="300" Margin="0,278,88,0"/>
+            <Button Content="Сохранить" x:Name="Saves" VerticalAlignment="Top" Margin="675,336,149,0" Click="Saves_Click"/>
+            <TextBlock Text="Текст комментария" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="20" Margin="0,227,160,0"/>
+            <TextBlock Text="Id комментария" HorizontalAlignment="Right" VerticalAlignment="Top" FontSize="20" Margin="0,99,176,0"/>
+            <TextBox VerticalAlignment="Top" x:Name="idcom" HorizontalAlignment="Right" Width="150" Margin="0,149,163,0"/>
+            <ListView Foreground="Black" FontSize="20" Name="Moder"  Width="450" HorizontalAlignment="Left" Margin="51,96,0,38" Height="400" d:ItemsSource="{d:SampleData ItemCount=5}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=IdComment}">Id</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=NameComment}" Width="210">Название</GridViewColumn>
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=DateComement}" Width="100">Дата</GridViewColumn>
+                    </GridView>
+                </ListView.View>
+            </ListView>
         </Grid>
     </Grid>
 </Window>

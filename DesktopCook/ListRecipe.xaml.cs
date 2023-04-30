@@ -38,6 +38,12 @@ namespace DesktopCook
             authorization.Show();
             this.Hide();
         }
+        private void ModirateComment_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            ModirateComment modirate = new ModirateComment(_moderator);
+            modirate.Show();
+            this.Hide();
+        }
         /// <summary>
         /// При нажатии на блок ListView происходит переход на другое окно для проверки рецепта (модерация)
         /// </summary>

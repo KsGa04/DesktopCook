@@ -60,13 +60,14 @@
                     <ColumnDefinition Width="129"/>
                     <ColumnDefinition Width="170"/>
                     <ColumnDefinition Width="129"/>
-                    <ColumnDefinition Width="129"/>
+                    <ColumnDefinition Width="170"/>
                     <ColumnDefinition Width="213"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
                 <TextBlock Text="Кухня" Grid.Column="0"  FontSize="36" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center"></TextBlock>
                 <TextBlock Grid.Column="1"  Style="{StaticResource header}" MouseLeftButtonDown="PrivateAccountModerator_MouseLeftButtonDown">Личный кабинет</TextBlock>
                 <TextBlock Grid.Column="2"  Style="{StaticResource header}" MouseLeftButtonDown="ListRecipe_MouseLeftButtonDown">Список рецептов</TextBlock>
+                <TextBlock Grid.Column="3" Style="{StaticResource header}" MouseLeftButtonDown="ModirateComment_MouseLeftButtonDown">Список комментариев</TextBlock>
                 <Button Grid.Column="5" Content="Выйти" HorizontalAlignment="Center" VerticalAlignment="Center" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="Authorization_Click"/>
             </Grid>
         </Border>

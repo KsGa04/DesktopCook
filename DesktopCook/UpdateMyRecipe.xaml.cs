@@ -121,6 +121,10 @@ namespace DesktopCook
                 }
                 MessageBox.Show("Запись обновлена");
             }
+            else
+            {
+                MessageBox.Show("Заполните все поля");
+            }
         }
     }
 }

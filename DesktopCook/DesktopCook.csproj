@@ -130,6 +130,9 @@
     <Compile Include="Moderator.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="ModirateComment.xaml.cs">
+      <DependentUpon>ModirateComment.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ModirateRecipe.xaml.cs">
       <DependentUpon>ModirateRecipe.xaml</DependentUpon>
     </Compile>
@@ -248,6 +251,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="ModirateComment.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ModirateRecipe.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -312,6 +319,5 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -76,7 +76,7 @@ namespace UnitTestProject1
         {
             AddCategory addCategory = new AddCategory();
             int actual = addCategory.categ.Items.Count;
-            int expected = 3;
+            int expected = 5;
             Assert.AreEqual(expected, actual);
         }
     }
