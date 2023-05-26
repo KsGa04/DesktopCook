@@ -97,7 +97,6 @@
                     </ComboBox>
 
                     <TextBlock Style="{StaticResource child}" Text="Регистрация" HorizontalAlignment="Left" MouseLeftButtonDown="Registration_MouseLeftButtonDown"/>
-                    <TextBlock Text="Восстановление пароля" Style="{StaticResource child}" HorizontalAlignment="Right" MouseLeftButtonDown="Recovery_MouseLeftButtonDown"/>
                     <Button Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Authorization_Click">Войти</Button>
 
                 </Grid>

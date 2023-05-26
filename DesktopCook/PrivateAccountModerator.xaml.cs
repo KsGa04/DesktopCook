@@ -44,16 +44,23 @@ namespace DesktopCook
         /// <summary>
         /// Сохранение изменений в личном кабинете 
         /// </summary>
+        public static void SaveModer(int id, string mail, string pass, string nik, System.DateTime dateTime)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Moderator moderator = db.Moderator.FirstOrDefault(x => x.IdModerator == id);
+                moderator.Mail = mail;
+                moderator.Password = pass;
+                moderator.NikName = nik;
+                moderator.DateOfBirth = dateTime;
+                db.SaveChanges();
+            }
+        }
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
             using (CookingBookEntities db = new CookingBookEntities())
             {
-                Moderator user = db.Moderator.FirstOrDefault(x => x.IdModerator == id);
-                user.NikName = Nikname.Text;
-                user.DateOfBirth = System.DateTime.Parse(DateBirth.Text);
-                user.Mail = Post.Text;
-                user.Password = Pass.Password;
-                db.SaveChanges();
+                SaveModer(id, Post.Text, Pass.Password, Nikname.Text, System.DateTime.Parse(DateBirth.Text));
             }
             MessageBox.Show("Запись обновлена");
         }

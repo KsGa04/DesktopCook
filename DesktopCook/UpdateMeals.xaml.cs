@@ -23,7 +23,7 @@ namespace DesktopCook
                 Categ.Items.Add(d.NameCategory);
             }
             Name.IsEnabled = false;
-            UpdateMeal.IsEnabled = false;
+            Update.IsEnabled = false;
             Choose_A_Photo.IsEnabled = false;
             textboxId.IsEnabled = true;
             GetInformation.IsEnabled = true;
@@ -113,13 +113,25 @@ namespace DesktopCook
         /// <summary>
         /// Сохрание изменений о блюде
         /// </summary>
+        public static void UpdateMeal(int id,string name, string description, byte[] image, int idCateg)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Meal meal = db.Meal.FirstOrDefault(x => x.IdMeal == id);
+                meal.ImageMeal = image;
+                meal.NameMeal = name;
+                meal.DescriptionMeal = description;
+                meal.IdCategory = idCateg;
+                db.SaveChanges();
+            }
+        }
         private void UpdateMeals_Click(object sender, RoutedEventArgs e)
         {
             if ((Name.Text != "") && (Desc.Text != "") && (Categ.SelectedItem != null))
             {
                 using (CookingBookEntities db = new CookingBookEntities())
                 {
-                    Meal meal = new Meal(Name.Text, Desc.Text, _image, Convert.ToInt32(Categ.SelectedIndex + 1));
+                    UpdateMeal(Convert.ToInt32(textboxId.Text), Name.Text, Desc.Text, _image, Convert.ToInt32(Categ.SelectedIndex + 1));
                     db.SaveChanges();
                 }
                 MessageBox.Show("Запись добавлена");
@@ -151,7 +163,7 @@ namespace DesktopCook
                     Desc.Text = meal.DescriptionMeal;
                     Categ.SelectedItem = meal.IdCategory;
                     Name.IsEnabled = true;
-                    UpdateMeal.IsEnabled = true;
+                    Update.IsEnabled = true;
                     Choose_A_Photo.IsEnabled = true;
                     textboxId.IsEnabled = false;
                     GetInformation.IsEnabled = false;

@@ -1,12 +1,15 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
 using DesktopCook;
 using System.Linq;
+using System;
 
 namespace UnitTestProject1
 {
+    /// <summary>
+    /// Сводное описание для TestRecipe
+    /// </summary>
     [TestClass]
-    public class UnitTest1
+    public class TestRecipe
     {
         [TestMethod]
         public void AddTesting()
@@ -72,11 +75,24 @@ namespace UnitTestProject1
             }
         }
         [TestMethod]
-        public void ViewCatalog()
+        public void ViewAddCatalog()
         {
             AddCategory addCategory = new AddCategory();
             int actual = addCategory.categ.Items.Count;
             int expected = 5;
+            Assert.AreEqual(expected, actual);
+        }
+        [TestMethod]
+        public void ViewCatalog()
+        {
+            DesktopCook.Users users;
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                users = db.Users.OrderByDescending(x => x.IdUser).First();
+            }
+            Catalog catalog = new Catalog(users);
+            int actual = catalog.ListCateg.Items.Count;
+            int expected = 3;
             Assert.AreEqual(expected, actual);
         }
     }

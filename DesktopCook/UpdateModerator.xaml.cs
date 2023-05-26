@@ -80,22 +80,29 @@ namespace DesktopCook
         /// <summary>
         /// Сохрание изменений о работнике
         /// </summary>
+        public static void UpdateModer(int id, string mail, string pass, string nik, DateTime dateTime, int idCateg)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Moderator moderator = db.Moderator.FirstOrDefault(x => x.IdModerator == id);
+                moderator.Mail = mail;
+                moderator.Password = pass;
+                moderator.NikName = nik;
+                moderator.DateOfBirth =dateTime;
+                moderator.IdCategory = idCateg;
+                db.SaveChanges();
+            }
+        }
         private void UpdateWorker_Click(object sender, RoutedEventArgs e)
         {
             if ((Post.Text != null) && (Pass.Text != null))
             {
                 using (CookingBookEntities db = new CookingBookEntities())
                 {
-                    Moderator moderator = new Moderator();
-                    moderator.Mail = Post.Text;
-                    moderator.Password = Pass.Text;
-                    moderator.NikName = Nik.Text;
-                    moderator.DateOfBirth = Convert.ToDateTime(Date.Text);
-                    moderator.IdCategory = Convert.ToInt32(Categ.SelectedIndex + 1);
-                    db.SaveChanges();
+                    UpdateModer(id, Post.Text, Pass.Text, Nik.Text, Convert.ToDateTime(Date.Text), Convert.ToInt32(Categ.SelectedIndex + 1));
 
                 }
-                MessageBox.Show("Запись добавлена");
+                MessageBox.Show("Запись обновлена");
             }
             else
             {

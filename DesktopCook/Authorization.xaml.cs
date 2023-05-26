@@ -19,15 +19,49 @@ namespace DesktopCook
             this.Hide();
         }
 
-        private void Recovery_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Recovery recovery = new Recovery();
-            recovery.Show();
-            this.Hide();
-        }
         /// <summary>
         /// Авторизация и проверка данных из бд
         /// </summary>
+        public static bool AuthoUser(string mail ,string pass)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                foreach (Users user in db.Users)
+                {
+                    if ((mail == user.Mail) && (pass == user.Password))
+                    {
+                        MessageBox.Show("Вы вошли под учетной записью " + user.Mail);
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Логин или пароль указан неверно!");
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
+        public static bool AuthoModer(string mail, string pass)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                foreach (Users user in db.Users)
+                {
+                    if ((mail == user.Mail) && (pass == user.Password))
+                    {
+                        MessageBox.Show("Вы вошли под учетной записью " + user.Mail);
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Логин или пароль указан неверно!");
+                        return false;
+                    }
+                }
+                return true;
+            }
+        }
         private void Authorization_Click(object sender, RoutedEventArgs e)
         {
             using (CookingBookEntities db = new CookingBookEntities())

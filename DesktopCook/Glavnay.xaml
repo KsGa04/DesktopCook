@@ -78,8 +78,6 @@
             </Grid>
         </Grid>
         <Grid Background="#ffde89" Grid.Row="2">
-            <TextBlock Text="Найти рецепт" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Top"></TextBlock>
-            <TextBox Text="Что ты хочешь приготовить?" Width="502" Height="46" FontSize="16" Foreground="#515151" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" BorderThickness="1" BorderBrush="Black"></TextBox>
         </Grid>
     </Grid>
 </Window>

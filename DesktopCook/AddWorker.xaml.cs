@@ -73,20 +73,28 @@ namespace DesktopCook
         /// <summary>
         /// Добавление работника в бд
         /// </summary>
+        public static void AddModer(string mail, string password, string nik,DateTime dateOfBirth, int idCateg)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Moderator moderator = new Moderator();
+                moderator.Mail =mail;
+                moderator.Password = password;
+                moderator.NikName = nik;
+                moderator.DateOfBirth = dateOfBirth;
+                moderator.IdCategory = idCateg;
+                db.Moderator.Add(moderator);
+                db.SaveChanges();
+            }
+        }
         private void AddWorker_Click(object sender, RoutedEventArgs e)
         {
             if ((Post.Text != null) && (Pass.Text != null))
             {
                 using (CookingBookEntities db = new CookingBookEntities())
                 {
-                    Moderator moderator = new Moderator();
-                    moderator.Mail = Post.Text;
-                    moderator.Password = Pass.Text;
-                    moderator.NikName = Nik.Text;
-                    moderator.DateOfBirth = Convert.ToDateTime(Date.Text);
-                    moderator.IdCategory = Convert.ToInt32(Categ.SelectedIndex + 1);
-                    db.Moderator.Add(moderator);
-                    db.SaveChanges();
+                    AddModer(Post.Text, Pass.Text, Nik.Text, Convert.ToDateTime(Date.Text), Convert.ToInt32(Categ.SelectedIndex + 1));
+
 
                 }
                 MessageBox.Show("Запись добавлена");

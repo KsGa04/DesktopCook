@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -14,12 +15,13 @@ namespace DesktopCook
     {
         private CookingBookEntities _db = new CookingBookEntities();
         private byte[] _image = null;
-
+        public ListView meal;
         private List<Meal> _meal = new List<Meal>();
         public AddMeals()
         {
             InitializeComponent();
             ListViewLoad();
+            meal = Meals;
             foreach (var d in _db.Category)
             {
                 Categ.Items.Add(d.NameCategory);
@@ -110,15 +112,22 @@ namespace DesktopCook
         /// <summary>
         /// Добавление Блюда в таблицу
         /// </summary>
+        public static void AddMeal(string name, string description, byte[] image, int idCateg)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Meal meal = new Meal(name, description, image, idCateg);
+                db.Meal.Add(meal);
+                db.SaveChanges();
+            }
+        }
         private void AddMeals_Click(object sender, RoutedEventArgs e)
         {
             if ((Name.Text != "") && (Desc.Text != "") && (Categ.SelectedItem != null))
             {
                 using (CookingBookEntities db = new CookingBookEntities())
                 {
-                    Meal meal = new Meal(Name.Text, Desc.Text, _image, Convert.ToInt32(Categ.SelectedIndex + 1));
-                    db.Meal.Add(meal);
-                    db.SaveChanges();
+                    AddMeal(Name.Text, Desc.Text, _image, Convert.ToInt32(Categ.SelectedIndex + 1));
                 }
                 MessageBox.Show("Запись добавлена");
             }
@@ -130,6 +139,15 @@ namespace DesktopCook
         /// <summary>
         /// Удаление блюда из таблицы
         /// </summary>
+        public static void RemoveMeals(int id)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Meal meal = db.Meal.Where(x => x.IdMeal == id).FirstOrDefault();
+                db.Meal.Remove(meal);
+                db.SaveChanges();
+            }
+        }
         private void RemoveMeal_Click(object sender, RoutedEventArgs e)
         {
             if (Meals.SelectedIndex >= 0)
@@ -140,13 +158,7 @@ namespace DesktopCook
                 {
                     var item = Meals.SelectedItem as Meal;
                     int id = item.IdMeal;
-                    using (CookingBookEntities db = new CookingBookEntities())
-                    {
-                        Meal meal = db.Meal.Where(x => x.IdMeal == id).FirstOrDefault();
-
-                        db.Meal.Remove(meal);
-                        db.SaveChanges();
-                    }
+                    RemoveMeals(id);
                 }
             }
             else

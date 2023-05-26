@@ -1,16 +1,19 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace DesktopCook
 {
     public partial class AllModerator : Window
     {
+        public ListView moder;
         public AllModerator()
         {
             InitializeComponent();
             ListViewLoad();
+            moder = Moder;
         }
         public void ListViewLoad()
         {
@@ -79,6 +82,15 @@ namespace DesktopCook
         /// <summary>
         /// Удаление работника из бд 
         /// </summary>
+        public static void RemoveModer(int id)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Moderator moderator = db.Moderator.Where(x => x.IdModerator == id).FirstOrDefault();
+                db.Moderator.Remove(moderator);
+                db.SaveChanges();
+            }
+        }
         private void RemoveModerator_Click(object sender, RoutedEventArgs e)
         {
             if (Moder.SelectedIndex >= 0)
@@ -91,10 +103,7 @@ namespace DesktopCook
                     int id = item.IdModerator;
                     using (CookingBookEntities db = new CookingBookEntities())
                     {
-                        Moderator moderator = db.Moderator.Where(x => x.IdModerator == id).FirstOrDefault();
-
-                        db.Moderator.Remove(moderator);
-                        db.SaveChanges();
+                        RemoveModer(id);
                     }
                 }
             }

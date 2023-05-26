@@ -12,6 +12,7 @@ namespace DesktopCook
         private List<Meal> _meals = new List<Meal>();
         private int _category;
         private Users _user;
+        public ListView ListMeal;
         public AllMeals(int category, Users user)
         {
             InitializeComponent();
@@ -20,6 +21,7 @@ namespace DesktopCook
             _meals = _context.Meal.ToList();
             _meals = _meals.Where(x => x.IdCategory == _category).ToList();
             ListMeals.ItemsSource = _meals;
+            ListMeal = ListMeals;
         }
         /// <summary>
         /// Переходы между окнами

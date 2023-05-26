@@ -13,6 +13,7 @@ namespace DesktopCook
         private CookingBookEntities _context = new CookingBookEntities();
         private List<Category> _category = new List<Category>();
         private Users _users;
+        public ListView ListCateg;
         public Catalog(Users user)
         {
             _users = user;
@@ -20,6 +21,7 @@ namespace DesktopCook
             ListCategory.Items.Clear();
             _category = _context.Category.ToList();
             ListCategory.ItemsSource = _category;
+            ListCateg = ListCategory;
         }
         /// <summary>
         /// Переходы между окнами

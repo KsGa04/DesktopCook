@@ -94,7 +94,7 @@
                 
                 <TextBlock Text="Id категории" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" FontSize="16"/>
                 <TextBox HorizontalAlignment="Center" Grid.Column="1" VerticalAlignment="Top" Margin="0,40,0,0" x:Name="textboxId"/>
-                <Button Grid.Column="0" Grid.Row="3" Content="Сохранить" Click="UpdateMeals_Click" x:Name="UpdateMeal"/>
+                <Button Grid.Column="0" Grid.Row="3" Content="Сохранить" Click="UpdateMeals_Click" x:Name="Update"/>
             </Grid>
             <Button Content="Получить" Grid.Column="1" VerticalAlignment="Top" Margin="0,20,0,0" x:Name="GetInformation" Click="GetMeals_Click"/>
             <ListView Foreground="Black" Margin="0,40,0,0" FontSize="20" Name="Meals"  Width="350" HorizontalAlignment="Center" Grid.Column="1" Height="400" d:ItemsSource="{d:SampleData ItemCount=5}">
