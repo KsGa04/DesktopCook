@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using DesktopCook;
+using System.Linq;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace UnitTestProject1
 {
@@ -11,59 +11,56 @@ namespace UnitTestProject1
     [TestClass]
     public class TestUser
     {
-        public TestUser()
-        {
-            //
-            // TODO: добавьте здесь логику конструктора
-            //
-        }
-
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Получает или устанавливает контекст теста, в котором предоставляются
-        ///сведения о текущем тестовом запуске и обеспечивается его функциональность.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
-        #region Дополнительные атрибуты тестирования
-        //
-        // При написании тестов можно использовать следующие дополнительные атрибуты:
-        //
-        // ClassInitialize используется для выполнения кода до запуска первого теста в классе
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // ClassCleanup используется для выполнения кода после завершения работы всех тестов в классе
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // TestInitialize используется для выполнения кода перед запуском каждого теста 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // TestCleanup используется для выполнения кода после завершения каждого теста
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
-
         [TestMethod]
-        public void TestMethod1()
+        public void PrivateAccountUser()
         {
-            //
-            // TODO: добавьте здесь логику теста
-            //
+            int id;
+            string mail = "ks@mail.ru";
+            string pass = "71717171";
+            string nik = "nikname";
+            DateTime dateTime = new DateTime(2003, 12, 05);
+
+            string mailBefore;
+            string passBefore;
+            string nikBefore;
+            DateTime dateTimeBefore;
+            DesktopCook.Users actual;
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                id = (from x in db.Users select x.IdUser).ToList().Last();
+                actual = db.Users.Where(x => x.IdUser == id).FirstOrDefault();
+                mailBefore = actual.Mail;
+                passBefore = actual.Password;
+                nikBefore = actual.NikName;
+                dateTimeBefore = Convert.ToDateTime(actual.DateOfBirth);
+
+                PrivateAccount.SaveUser(id, mail, pass, nik, dateTime);
+            }
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                id = (from x in db.Users select x.IdUser).ToList().Last();
+                actual = db.Users.Where(x => x.IdUser == id).FirstOrDefault();
+                Assert.AreNotEqual(mailBefore, actual.Mail);
+                Assert.AreNotEqual(passBefore, actual.Password);
+                Assert.AreNotEqual(nikBefore, actual.NikName);
+                Assert.AreNotEqual(dateTimeBefore, actual.DateOfBirth);
+            }
+        }
+        [TestMethod]
+        public void RegistrationUser()
+        {
+            int id;
+            string mail = "testMail";
+            string pass = "passMail";
+            DesktopCook.Users actual;
+            Registration.Reg(mail, pass);
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                id = (from x in db.Users select x.IdUser).ToList().Last();
+                actual = db.Users.Where(x => x.IdUser == id).FirstOrDefault();
+                Assert.AreEqual(mail, actual.Mail);
+                Assert.AreEqual(pass, actual.Password);
+            }
         }
     }
 }

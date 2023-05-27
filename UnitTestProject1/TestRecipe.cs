@@ -15,17 +15,28 @@ namespace UnitTestProject1
         public void AddTesting()
         {
             byte[] image;
-            string path = "d:\\cook\\salat.jpg";
+            string path = "d:\\cook\\borsh.jpg";
             image = System.IO.File.ReadAllBytes(path);
-            string name = "Салат";
+            string name = "Борщ (тест)";
+            string ingr = "тестовый рецепт";
+            string desc = "тестовый рецепт";
+            int idCateg = 1;
+            int idMeal = 1;
+            int idUser = 1;
 
-            AddCategory.AddCategories(name, image);
-            DesktopCook.Category actual;
+
+            AddRecipe.AddRecipes(name, ingr, desc, image, idCateg, idMeal, idUser, false);
+            DesktopCook.Recipe actual;
             using (CookingBookEntities db = new CookingBookEntities())
             {
-                actual = db.Category.OrderByDescending(x => x.IdCategory).First();
-                Assert.AreEqual(name, actual.NameCategory);
-                CollectionAssert.AreEqual(image, actual.ImageCategory);
+                actual = db.Recipe.OrderByDescending(x => x.IdRecipe).First();
+                Assert.AreEqual(name, actual.NameRecipe);
+                Assert.AreEqual(ingr, actual.Ingredient);
+                Assert.AreEqual(desc, actual.Description);
+                Assert.AreEqual(idCateg, actual.IdCategory);
+                Assert.AreEqual(idMeal, actual.IdMeal);
+                Assert.AreEqual(idUser, actual.IdUser);
+                CollectionAssert.AreEqual(image, actual.ImageRecipe);
             }
 
         }
@@ -33,65 +44,106 @@ namespace UnitTestProject1
         public void RemoveTesting()
         {
             int id;
-            DesktopCook.Category actual;
+            DesktopCook.Recipe actual;
             using (CookingBookEntities db = new CookingBookEntities())
             {
-                id = (from x in db.Category select x.IdCategory).ToList().Last();
-                actual = db.Category.Where(x => x.IdCategory == id).FirstOrDefault();
+                id = (from x in db.Recipe select x.IdRecipe).ToList().Last();
+                actual = db.Recipe.Where(x => x.IdRecipe == id).FirstOrDefault();
             }
-            AddCategory.RemoveCategories(id);
+            MyRecipes.RemoveRecipes(id);
             using (CookingBookEntities db = new CookingBookEntities())
             {
-                actual = db.Category.Where(x => x.IdCategory == id).FirstOrDefault();
+                actual = db.Recipe.Where(x => x.IdRecipe == id).FirstOrDefault();
             }
             Assert.IsNull(actual);
         }
         [TestMethod]
-        public void UpdateTesTisting()
+        public void UpdateTesting()
         {
             int id;
-            string namebefore;
-            string nameafter = "Мясо";
+            byte[] image;
+            string path = "d:\\cook\\moxito.jpg";
+            image = System.IO.File.ReadAllBytes(path);
+            string name = "Мохито (тест)";
+            string ingr = "тестовый рецепт";
+            string desc = "тестовый рецепт";
+            int idCateg = 2;
+            int idMeal = 1;
+            int idUser = 1;
+
+            string nameBefore;
+            string inrgBefore;
+            string descBefore;
             byte[] imageBefore;
-
-            string pathAfter = "d:\\cook\\meat.jpg";
-            byte[] imageAfter = System.IO.File.ReadAllBytes(pathAfter);
-            DesktopCook.Category actual;
+            DesktopCook.Recipe actual;
             using (CookingBookEntities db = new CookingBookEntities())
             {
-                id = (from x in db.Category select x.IdCategory).ToList().Last();
-                actual = db.Category.Where(x => x.IdCategory == id).FirstOrDefault();
-                namebefore = actual.NameCategory;
-                imageBefore = actual.ImageCategory;
+                id = (from x in db.Recipe select x.IdRecipe).ToList().Last();
+                actual = db.Recipe.Where(x => x.IdRecipe == id).FirstOrDefault();
+                nameBefore = actual.NameRecipe;
+                inrgBefore = actual.Ingredient;
+                descBefore = actual.Description;
+                imageBefore = actual.ImageRecipe;
 
-                UpdateCategory.UpdateCategories(id, nameafter, imageAfter);
+                UpdateMyRecipe.UpdateRecipe(id, name, ingr, desc, image, idCateg, idMeal, idUser, false);
             }
             using (CookingBookEntities db = new CookingBookEntities())
             {
-                id = (from x in db.Category select x.IdCategory).ToList().Last();
-                actual = db.Category.Where(x => x.IdCategory == id).FirstOrDefault();
-                Assert.AreNotEqual(namebefore, actual.NameCategory);
-                CollectionAssert.AreNotEqual(imageBefore, actual.ImageCategory);
+                id = (from x in db.Recipe select x.IdRecipe).ToList().Last();
+                actual = db.Recipe.Where(x => x.IdCategory == id).FirstOrDefault();
+                Assert.AreNotEqual(nameBefore, actual.NameRecipe);
+                Assert.AreNotEqual(inrgBefore, actual.Ingredient);
+                Assert.AreNotEqual(descBefore, actual.Description);
+                CollectionAssert.AreNotEqual(imageBefore, actual.ImageRecipe);
             }
         }
         [TestMethod]
-        public void ViewAddCatalog()
+        public void ApproveDisRecipe()
         {
-            AddCategory addCategory = new AddCategory();
-            int actual = addCategory.categ.Items.Count;
-            int expected = 5;
-            Assert.AreEqual(expected, actual);
+            int id;
+            byte[] image;
+            string path = "d:\\cook\\moxito.jpg";
+            image = System.IO.File.ReadAllBytes(path);
+            string name = "Мохито (тест)";
+            string ingr = "тестовый рецепт";
+            string desc = "тестовый рецепт";
+            bool moder = true;
+
+            string nameBefore;
+            string inrgBefore;
+            string descBefore;
+            byte[] imageBefore;
+            bool moderBefore;
+            DesktopCook.Recipe actual;
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                id = (from x in db.Recipe select x.IdRecipe).ToList().Last();
+                actual = db.Recipe.Where(x => x.IdRecipe == id).FirstOrDefault();
+                nameBefore = actual.NameRecipe;
+                inrgBefore = actual.Ingredient;
+                descBefore = actual.Description;
+                imageBefore = actual.ImageRecipe;
+                moderBefore = actual.Moder;
+
+                ModirateRecipe.ApproveDisRecipe(id, name, ingr, desc, moder);
+            }
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                id = (from x in db.Recipe select x.IdRecipe).ToList().Last();
+                actual = db.Recipe.Where(x => x.IdCategory == id).FirstOrDefault();
+                Assert.AreNotEqual(moderBefore, actual.Moder);
+            }
         }
         [TestMethod]
-        public void ViewCatalog()
+        public void ViewRecipe()
         {
             DesktopCook.Users users;
             using (CookingBookEntities db = new CookingBookEntities())
             {
-                users = db.Users.OrderByDescending(x => x.IdUser).First();
+                users = db.Users.Where(x => x.IdUser == 1).FirstOrDefault();
             }
-            Catalog catalog = new Catalog(users);
-            int actual = catalog.ListCateg.Items.Count;
+            MyRecipes myRecipes = new MyRecipes(users);
+            int actual = myRecipes.listRecipe.Items.Count;
             int expected = 3;
             Assert.AreEqual(expected, actual);
         }

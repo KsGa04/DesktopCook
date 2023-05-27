@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
 
@@ -15,8 +16,10 @@ namespace DesktopCook
         private int _recipe;
         private byte[] _image;
         private Users _users;
+        public ListView listCom;
         public NewRecipe(int recipe, Users users)
         {
+            listCom = ListComment;
             InitializeComponent();
             _recipe = recipe;
             _users = users;
@@ -88,6 +91,19 @@ namespace DesktopCook
         /// <summary>
         /// Добавление комментария при нажатие клавиши enter
         /// </summary>
+        public static void AddComment(string name, int IdUser, int IdRecipe)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Comment comment = new Comment();
+                comment.NameComment = name;
+                comment.DateComement = DateTime.Now;
+                comment.IdUser = IdUser;
+                comment.IdRecipe = IdRecipe;
+                db.Comment.Add(comment);
+                db.SaveChanges();
+            }
+        }
         private void Comment_KeyDown(object sender, KeyEventArgs e)
         {
             int id = _users.IdUser;
@@ -95,13 +111,7 @@ namespace DesktopCook
             {
                 using (CookingBookEntities db = new CookingBookEntities())
                 {
-                    Comment comment = new Comment();
-                    comment.NameComment = NameCom.Text;
-                    comment.DateComement = DateTime.Now;
-                    comment.IdUser = id;
-                    comment.IdRecipe = _recipe;
-                    db.Comment.Add(comment);
-                    db.SaveChanges();
+                    AddComment(NameCom.Text, id, _recipe);
                 }
             }
             UpdateComment();

@@ -12,6 +12,7 @@ namespace DesktopCook
         private List<Recipe> _recipe = new List<Recipe>();
         private Users _user;
         private int id;
+        public ListView listRecipe;
         public MyRecipes(Users user)
         {
             _user = user;
@@ -21,6 +22,7 @@ namespace DesktopCook
             _recipe = _context.Recipe.ToList();
             _recipe = _recipe.Where(x => x.IdUser == id).ToList();
             ListRecipe.ItemsSource = _recipe;
+            listRecipe = ListRecipe;
         }
         /// <summary>
         /// Переходы между окнами
@@ -62,6 +64,16 @@ namespace DesktopCook
         /// <summary>
         /// Удаление рецепта 
         /// </summary>
+        public static void RemoveRecipes(int id)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Recipe recipe = db.Recipe.Where(x => x.IdRecipe == id).FirstOrDefault();
+
+                db.Recipe.Remove(recipe);
+                db.SaveChanges();
+            }
+        }
         private void RemoveRecipe_Click(object sender, RoutedEventArgs e)
         {
             if (ListRecipe.SelectedIndex >= 0)
@@ -74,10 +86,7 @@ namespace DesktopCook
                     int id = item.IdRecipe;
                     using (CookingBookEntities db = new CookingBookEntities())
                     {
-                        Recipe recipe = db.Recipe.Where(x => x.IdRecipe == id).FirstOrDefault();
-
-                        db.Recipe.Remove(recipe);
-                        db.SaveChanges();
+                        RemoveRecipes(id);
                         FillListRecipe();
                     }
                 }

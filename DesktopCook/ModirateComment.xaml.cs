@@ -64,6 +64,18 @@ namespace DesktopCook
             modirate.Show();
             this.Hide();
         }
+        /// <summary>
+        /// Удаление комментария модератором
+        /// </summary>
+        public static void RemoveComment(int id)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Comment comment = db.Comment.Where(x => x.IdComment == id).FirstOrDefault();
+                db.Comment.Remove(comment);
+                db.SaveChanges();
+            }
+        }
         private void RemoveRecipe_Click(object sender, RoutedEventArgs e)
         {
             if (Moder.SelectedIndex >= 0)
@@ -76,10 +88,7 @@ namespace DesktopCook
                     int id = item.IdComment;
                     using (CookingBookEntities db = new CookingBookEntities())
                     {
-                        Comment comment = db.Comment.Where(x => x.IdComment == id).FirstOrDefault();
-
-                        db.Comment.Remove(comment);
-                        db.SaveChanges();
+                        RemoveComment(id);
                         ListViewLoad();
                     }
                 }
@@ -89,7 +98,10 @@ namespace DesktopCook
                 }
             }
         }
-
+        /// <summary>
+        /// Вывод информации о комментарии
+        /// </summary>
+        
         private void Update_Click(object sender, RoutedEventArgs e)
         {
             TextComment.IsEnabled = true;
@@ -103,7 +115,18 @@ namespace DesktopCook
                 
             }
         }
-
+        /// <summary>
+        /// Изменение комментария
+        /// </summary>
+        public static void UpdateComment(int id, string name)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Comment comment = db.Comment.FirstOrDefault(x => x.IdComment == id);
+                comment.NameComment = name;
+                db.SaveChanges();
+            }
+        }
         private void Saves_Click(object sender, RoutedEventArgs e)
         {
             _id = Convert.ToInt32(idcom.Text);
@@ -111,10 +134,7 @@ namespace DesktopCook
             {
                 using (CookingBookEntities db = new CookingBookEntities())
                 {
-                    Comment comment = db.Comment.FirstOrDefault(x => x.IdComment == _id);
-                    comment.NameComment = TextComment.Text;
-                    
-                    db.SaveChanges();
+                    UpdateComment(_id, TextComment.Text);
                 }
                 MessageBox.Show("Запись обновлена");
             }

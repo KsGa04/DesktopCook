@@ -101,6 +101,22 @@ namespace DesktopCook
         /// <summary>
         /// Сохрание изменений о рецепте
         /// </summary>
+        public static void UpdateRecipe(int id, string name, string ingr, string description, byte[] image, int idCateg, int idMeal, int idUser, bool moder)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Recipe recipe = db.Recipe.FirstOrDefault(x => x.IdRecipe == id);
+                recipe.ImageRecipe = image;
+                recipe.NameRecipe = name;
+                recipe.Ingredient = ingr;
+                recipe.Description = description;
+                recipe.IdCategory = idCateg;
+                recipe.IdMeal = idMeal;
+                recipe.IdUser = idUser;
+                recipe.Moder = moder;
+                db.SaveChanges();
+            }
+        }
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
             _userId = _user.IdUser;
@@ -108,16 +124,7 @@ namespace DesktopCook
             {
                 using (CookingBookEntities db = new CookingBookEntities())
                 {
-                    Recipe recipe = db.Recipe.FirstOrDefault(x => x.IdRecipe == _id);
-                    recipe.ImageRecipe = _image;
-                    recipe.NameRecipe = Name.Text;
-                    recipe.Description = Desc.Text;
-                    recipe.Ingredient = Ingr.Text;
-                    recipe.Moder = false;
-                    recipe.IdCategory = Convert.ToInt32(Categ.SelectedIndex + 1);
-                    recipe.IdMeal = Convert.ToInt32(Dish.SelectedIndex + 1);
-                    recipe.IdUser = _userId;
-                    db.SaveChanges();
+                    UpdateRecipe(_id, Name.Text, Ingr.Text, Desc.Text, _image, Convert.ToInt32(Categ.SelectedIndex + 1), Convert.ToInt32(Dish.SelectedIndex + 1), _userId, false);
                 }
                 MessageBox.Show("Запись обновлена");
             }

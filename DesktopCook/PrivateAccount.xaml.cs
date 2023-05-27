@@ -51,17 +51,25 @@ namespace DesktopCook
         /// <summary>
         /// Сохранение изменений в личном кабинете 
         /// </summary>
+        public static void SaveUser(int id, string mail, string pass, string nik, System.DateTime dateTime)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Users user = db.Users.FirstOrDefault(x => x.IdUser == id);
+                user.Mail = mail;
+                user.Password = pass;
+                user.NikName = nik;
+                user.DateOfBirth = dateTime;
+                db.SaveChanges();
+            }
+        }
         private void SaveChanges_Click(object sender, RoutedEventArgs e)
         {
             if (Post.Text != "" && Pass.Password != "")
             {
                 using (CookingBookEntities db = new CookingBookEntities())
                 {
-                    Users user = db.Users.FirstOrDefault(x => x.IdUser == id);
-                    user.NikName = Nikname.Text;
-                    user.DateOfBirth = System.DateTime.Parse(DateBirth.Text);
-                    user.Mail = Post.Text;
-                    user.Password = Pass.Password;
+                    SaveUser(id, Post.Text, Pass.Password, Nikname.Text, System.DateTime.Parse(DateBirth.Text));
                     db.SaveChanges();
                 }
                 MessageBox.Show("Запись обновлена");

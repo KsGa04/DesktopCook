@@ -66,17 +66,21 @@ namespace DesktopCook
         /// <summary>
         /// Одобрение рецепта модератором 
         /// </summary>
+        public static void ApproveDisRecipe(int id, string name, string ingr, string description, bool moder)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Recipe recipe = db.Recipe.FirstOrDefault(x => x.IdRecipe == id);
+                recipe.NameRecipe = name;
+                recipe.Ingredient = ingr;
+                recipe.Description = description;
+                recipe.Moder = moder;
+                db.SaveChanges();
+            }
+        }
         private void Approve_Click(object sender, RoutedEventArgs e)
         {
-                using (CookingBookEntities db = new CookingBookEntities())
-                {
-                Recipe recipe = db.Recipe.FirstOrDefault(x => x.IdRecipe == _recipe);
-                recipe.NameRecipe = Name.Text;
-                recipe.Description = Desc.Text;
-                recipe.Ingredient = Ingr.Text;
-                recipe.Moder = true;
-                    db.SaveChanges();
-                }
+                ApproveDisRecipe(_recipe, Name.Text, Ingr.Text, Desc.Text, true);
                 MessageBox.Show("Запись обновлена");
         }
         /// <summary>
@@ -84,15 +88,7 @@ namespace DesktopCook
         /// </summary>
         private void Disapprove_Click(object sender, RoutedEventArgs e)
         {
-            using (CookingBookEntities db = new CookingBookEntities())
-            {
-                Recipe recipe = db.Recipe.FirstOrDefault(x => x.IdRecipe == _recipe);
-                recipe.NameRecipe = Name.Text;
-                recipe.Description = Desc.Text;
-                recipe.Ingredient = Ingr.Text;
-                recipe.Moder = false;
-                db.SaveChanges();
-            }
+            ApproveDisRecipe(_recipe, Name.Text, Ingr.Text, Desc.Text, false);
             MessageBox.Show("Запись обновлена");
         }
     }

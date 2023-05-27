@@ -83,6 +83,15 @@ namespace DesktopCook
         /// <summary>
         /// Добавление рецепта в бд
         /// </summary>
+        public static void AddRecipes(string name, string ingr, string desc, byte[] image, int idCateg, int idMeal, int idUser, bool moder)
+        {
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                Recipe recipe = new Recipe(name, ingr, desc, image, idCateg, idMeal, idUser, false);
+                db.Recipe.Add(recipe);
+                db.SaveChanges();
+            }
+        }
         private void AddRecipe_Click(object sender, RoutedEventArgs e)
         {
             id = _users.IdUser;
@@ -90,9 +99,7 @@ namespace DesktopCook
             {
                 using (CookingBookEntities db = new CookingBookEntities())
                 {
-                    Recipe recipe = new Recipe(Name.Text, Ingr.Text, Desc.Text, _image, Convert.ToInt32(Categ.SelectedIndex + 1), Convert.ToInt32(Dish.SelectedIndex + 1), id, false);
-                    db.Recipe.Add(recipe);
-                    db.SaveChanges();
+                    AddRecipes(Name.Text, Ingr.Text, Desc.Text, _image, Convert.ToInt32(Categ.SelectedIndex + 1), Convert.ToInt32(Dish.SelectedIndex + 1), id, false);
                 }
                 MessageBox.Show("Запись добавлена");
             }

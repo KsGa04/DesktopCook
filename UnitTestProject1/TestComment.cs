@@ -1,7 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using DesktopCook;
+using System.Linq;
 
 namespace UnitTestProject1
 {
@@ -11,59 +10,76 @@ namespace UnitTestProject1
     [TestClass]
     public class TestComment
     {
-        public TestComment()
-        {
-            //
-            // TODO: добавьте здесь логику конструктора
-            //
-        }
-
-        private TestContext testContextInstance;
-
-        /// <summary>
-        ///Получает или устанавливает контекст теста, в котором предоставляются
-        ///сведения о текущем тестовом запуске и обеспечивается его функциональность.
-        ///</summary>
-        public TestContext TestContext
-        {
-            get
-            {
-                return testContextInstance;
-            }
-            set
-            {
-                testContextInstance = value;
-            }
-        }
-
-        #region Дополнительные атрибуты тестирования
-        //
-        // При написании тестов можно использовать следующие дополнительные атрибуты:
-        //
-        // ClassInitialize используется для выполнения кода до запуска первого теста в классе
-        // [ClassInitialize()]
-        // public static void MyClassInitialize(TestContext testContext) { }
-        //
-        // ClassCleanup используется для выполнения кода после завершения работы всех тестов в классе
-        // [ClassCleanup()]
-        // public static void MyClassCleanup() { }
-        //
-        // TestInitialize используется для выполнения кода перед запуском каждого теста 
-        // [TestInitialize()]
-        // public void MyTestInitialize() { }
-        //
-        // TestCleanup используется для выполнения кода после завершения каждого теста
-        // [TestCleanup()]
-        // public void MyTestCleanup() { }
-        //
-        #endregion
-
         [TestMethod]
-        public void TestMethod1()
+        public void AddTesting()
         {
-            //
-            // TODO: добавьте здесь логику теста
-            //
+            string name = "Так себе рецепт";
+            int IdUser = 1;
+            int IdRecipe = 1;
+
+            NewRecipe.AddComment(name, IdUser, IdRecipe);
+            DesktopCook.Comment actual;
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                actual = db.Comment.OrderByDescending(x => x.IdComment).First();
+                Assert.AreEqual(name, actual.NameComment);
+                Assert.AreEqual(IdUser, actual.IdUser);
+                Assert.AreEqual(IdRecipe, actual.IdRecipe);
+            }
+
+        }
+        [TestMethod]
+        public void RemoveTesting()
+        {
+            int id;
+            DesktopCook.Comment actual;
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                id = (from x in db.Comment select x.IdComment).ToList().Last();
+                actual = db.Comment.Where(x => x.IdComment == id).FirstOrDefault();
+            }
+            ModirateComment.RemoveComment(id);
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                actual = db.Comment.Where(x => x.IdComment == id).FirstOrDefault();
+            }
+            Assert.IsNull(actual);
+        }
+        [TestMethod]
+        public void UpdateTesTisting()
+        {
+            int id;
+            string name = "Интересный рецепт";
+            string nameBefore;
+            DesktopCook.Comment actual;
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                id = (from x in db.Comment select x.IdComment).ToList().Last();
+                actual = db.Comment.Where(x => x.IdComment == id).FirstOrDefault();
+                nameBefore = actual.NameComment;
+
+                ModirateComment.UpdateComment(id, name);
+            }
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                id = (from x in db.Comment select x.IdComment).ToList().Last();
+                actual = db.Comment.Where(x => x.IdComment == id).FirstOrDefault();
+                Assert.AreNotEqual(nameBefore, actual.NameComment);
+            }
+        }
+        [TestMethod]
+        public void ViewComment()
+        {
+            int recipe = 1;
+            DesktopCook.Users users;
+            using (CookingBookEntities db = new CookingBookEntities())
+            {
+                users = db.Users.OrderByDescending(x => x.IdUser).First();
+            }
+            NewRecipe newRecipe = new NewRecipe(recipe, users);
+            int actual = newRecipe.listCom.Items.Count;
+            int expected = 3;
+            Assert.AreEqual(expected, actual);
         }
     }
 }
