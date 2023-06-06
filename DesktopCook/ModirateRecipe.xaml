@@ -73,7 +73,7 @@
             <TextBox x:Name="Name" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="24" Grid.ColumnSpan="2" Margin="341,26,0,0" TextWrapping="Wrap" Width="332"/>
             <TextBox x:Name="Desc" HorizontalAlignment="Center" TextAlignment="Justify" VerticalAlignment="Top" Margin="0,87,0,0" Height="417" Width="321" Grid.Column="1" FontSize="16" TextWrapping="Wrap"/>
             <Button Content="Одобрить" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Approve_Click" Margin="0,100"/>
-            <Button Content="Не одобрять" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Disapprove_Click"/>
+            <Button Content="Отклонить" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Disapprove_Click"/>
         </Grid>
     </Grid>
 </Window>

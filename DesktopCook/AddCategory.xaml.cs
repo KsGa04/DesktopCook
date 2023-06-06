@@ -17,7 +17,6 @@ namespace DesktopCook
             InitializeComponent();
             ListViewLoad();
             categ = Categ;
-            MessageBox.Show(categ.Items.Count.ToString());
         }
         /// <summary>
         /// Заполнение ListView данными из твблицы Category

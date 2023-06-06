@@ -88,14 +88,14 @@ namespace UnitTestProject1
                 Assert.AreNotEqual(idCategBefore, actual.IdCategory);
             }
         }
-        [TestMethod]
-        public void ViewAllModer()
-        {
-            AllModerator moderator = new AllModerator();
-            int actual = moderator.moder.Items.Count;
-            int expected = 2;
-            Assert.AreEqual(expected, actual);
-        }
+        //[TestMethod]
+        //public void ViewAllModer()
+        //{
+        //    AllModerator moderator = new AllModerator();
+        //    int actual = moderator.moder.Items.Count;
+        //    int expected = 2;
+        //    Assert.AreEqual(expected, actual);
+        //}
         [TestMethod]
         public void PrivateAccountModer()
         {

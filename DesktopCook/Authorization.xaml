@@ -81,23 +81,14 @@
                         <RowDefinition/>
                         <RowDefinition/>
                         <RowDefinition/>
-                        <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock Text="Авторизация" FontSize="24" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10" Grid.Row="0"/>
                     <TextBlock Text="Почта" Style="{StaticResource main}" Grid.Row="1"/>
                     <TextBox x:Name="textboxLog" Grid.Row="1"/>
                     <TextBlock Text="Пароль" Grid.Row="2" Style="{StaticResource main}"/>
                     <PasswordBox x:Name="textboxPass" Grid.Row="2" />
-                    <CheckBox x:Name="Pass" Grid.Row="2" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,100,20" Checked="Pass_Checked"/>
-                    <TextBlock Text="Роли" Grid.Row="3" Style="{StaticResource main}" />
-                    <ComboBox x:Name="role" Width="239" Height="35" FontSize="13" Margin="10" Grid.Row="3" VerticalAlignment="Bottom" HorizontalAlignment="Left" VerticalContentAlignment="Center" BorderBrush="Black" BorderThickness="1">
-                        <TextBlock Text="Пользователь"/>
-                        <TextBlock Text="Модератор"/>
-                        <TextBlock Text="Администратор"/>
-                    </ComboBox>
-
-                    <TextBlock Style="{StaticResource child}" Text="Регистрация" HorizontalAlignment="Left" MouseLeftButtonDown="Registration_MouseLeftButtonDown"/>
-                    <Button Grid.Row="5" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Authorization_Click">Войти</Button>
+                    <TextBlock Style="{StaticResource child}" Text="Регистрация" HorizontalAlignment="Left" MouseLeftButtonDown="Registration_MouseLeftButtonDown" Grid.Row="3"/>
+                    <Button Grid.Row="4" HorizontalAlignment="Center" VerticalAlignment="Center" Click="Authorization_Click">Войти</Button>
 
                 </Grid>
             </Border>

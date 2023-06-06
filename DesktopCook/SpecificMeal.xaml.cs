@@ -22,7 +22,7 @@ namespace DesktopCook
             _meal = meal;
             ListRecipe.Items.Clear();
             _recipe = _context.Recipe.ToList();
-            _recipe = _recipe.Where(x => x.IdMeal == _meal).ToList();
+            _recipe = _recipe.Where(x => x.IdMeal == _meal && x.Moder == true).ToList();
             ListRecipe.ItemsSource = _recipe;
             FillImageBox();
         }

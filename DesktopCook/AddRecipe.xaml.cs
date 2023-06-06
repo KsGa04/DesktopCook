@@ -99,7 +99,8 @@ namespace DesktopCook
             {
                 using (CookingBookEntities db = new CookingBookEntities())
                 {
-                    AddRecipes(Name.Text, Ingr.Text, Desc.Text, _image, Convert.ToInt32(Categ.SelectedIndex + 1), Convert.ToInt32(Dish.SelectedIndex + 1), id, false);
+                    int idCateg = Categ.SelectedIndex + 1;
+                    AddRecipes(Name.Text, Ingr.Text, Desc.Text, _image, idCateg, Convert.ToInt32(Dish.SelectedIndex + 1), id, false);
                 }
                 MessageBox.Show("Запись добавлена");
             }

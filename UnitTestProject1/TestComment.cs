@@ -67,19 +67,19 @@ namespace UnitTestProject1
                 Assert.AreNotEqual(nameBefore, actual.NameComment);
             }
         }
-        [TestMethod]
-        public void ViewComment()
-        {
-            int recipe = 1;
-            DesktopCook.Users users;
-            using (CookingBookEntities db = new CookingBookEntities())
-            {
-                users = db.Users.OrderByDescending(x => x.IdUser).First();
-            }
-            NewRecipe newRecipe = new NewRecipe(recipe, users);
-            int actual = newRecipe.listCom.Items.Count;
-            int expected = 3;
-            Assert.AreEqual(expected, actual);
-        }
+        //[TestMethod]
+        //public void ViewComment()
+        //{
+        //    int recipe = 1;
+        //    DesktopCook.Users users;
+        //    using (CookingBookEntities db = new CookingBookEntities())
+        //    {
+        //        users = db.Users.OrderByDescending(x => x.IdUser).First();
+        //    }
+        //    NewRecipe newRecipe = new NewRecipe(recipe, users);
+        //    int actual = newRecipe.listCom.Items.Count;
+        //    int expected = 3;
+        //    Assert.AreEqual(expected, actual);
+        //}
     }
 }

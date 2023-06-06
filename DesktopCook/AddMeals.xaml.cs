@@ -127,7 +127,8 @@ namespace DesktopCook
             {
                 using (CookingBookEntities db = new CookingBookEntities())
                 {
-                    AddMeal(Name.Text, Desc.Text, _image, Convert.ToInt32(Categ.SelectedIndex + 1));
+                    int idCateg = Categ.SelectedIndex + 1;
+                    AddMeal(Name.Text, Desc.Text, _image, idCateg);
                 }
                 MessageBox.Show("Запись добавлена");
             }
@@ -135,6 +136,7 @@ namespace DesktopCook
             {
                 MessageBox.Show("Заполните все поля");
             }
+            ListViewLoad();
         }
         /// <summary>
         /// Удаление блюда из таблицы

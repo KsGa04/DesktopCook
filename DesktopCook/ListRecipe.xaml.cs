@@ -19,7 +19,7 @@ namespace DesktopCook
             InitializeComponent();
             LstRecipe.Items.Clear();
             _recipe = _context.Recipe.ToList();
-            _recipe = _recipe.Where(x => x.IdCategory == id && x.Moder == false).ToList();
+            _recipe = _recipe.Where(x => x.IdCategory == id).ToList();
             LstRecipe.ItemsSource = _recipe;
         }
         /// <summary>

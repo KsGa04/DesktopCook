@@ -93,7 +93,8 @@ namespace DesktopCook
             {
                 using (CookingBookEntities db = new CookingBookEntities())
                 {
-                    AddModer(Post.Text, Pass.Text, Nik.Text, Convert.ToDateTime(Date.Text), Convert.ToInt32(Categ.SelectedIndex + 1));
+                    int idCateg = Categ.SelectedIndex + 1;
+                    AddModer(Post.Text, Pass.Text, Nik.Text, Convert.ToDateTime(Date.Text), idCateg);
 
 
                 }

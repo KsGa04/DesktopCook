@@ -73,7 +73,7 @@
         <Label Content="Обновление Модератора" FontSize="24" Grid.Row="1" Width="300"  Height="60" Margin="31,27,693,427"/>
         <TextBlock Text="Id категории" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,50,0,0" Style="{StaticResource main}"/>
         <TextBox HorizontalAlignment="Center" Grid.Row="1" VerticalAlignment="Top" Margin="0,90,0,0" x:Name="textboxId"/>
-        <Button Content="Получить" Grid.Row="1" Margin="694,72,130,426" x:Name="GetInformation" Click="GetCategory_Click"/>
+        <Button Content="Получить" HorizontalAlignment="Right" Margin="150,85" VerticalAlignment="Top" Grid.Row="1" x:Name="GetInformation" Click="GetCategory_Click"/>
 
         <Grid Grid.Row="1" Width="800" Height="200">
             <Grid.ColumnDefinitions>

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System.Linq;
+using System.Windows;
 using System.Windows.Input;
 
 namespace DesktopCook
@@ -22,7 +23,7 @@ namespace DesktopCook
         /// <summary>
         /// Авторизация и проверка данных из бд
         /// </summary>
-        public static bool AuthoUser(string mail ,string pass)
+        public static bool AuthoUser(string mail, string pass)
         {
             using (CookingBookEntities db = new CookingBookEntities())
             {
@@ -66,64 +67,40 @@ namespace DesktopCook
         {
             using (CookingBookEntities db = new CookingBookEntities())
             {
-                if (role.SelectedIndex == 0)
+                if (db.Users.Where(x => x.Mail == textboxLog.Text && x.Password == textboxPass.Password).Any())
                 {
-                    foreach (Users user in db.Users)
-                    {
-                        if ((textboxLog.Text == user.Mail) && (textboxPass.Password == user.Password))
-                        {
-                            Glavnay glavnay = new Glavnay(user);
-                            this.Hide();
-                            MessageBox.Show("Вы вошли под учетной записью " + user.Mail);
-                            glavnay.Show();
-                            return;
-                        }
-                    }
-                    MessageBox.Show("Логин или пароль указан неверно!");
+                    Users user = db.Users.Where(x => x.Mail == textboxLog.Text && x.Password == textboxPass.Password).First();
+                    Glavnay glavnay = new Glavnay(user);
+                    this.Hide();
+                    MessageBox.Show("Вы вошли под учетной записью " + user.Mail);
+                    glavnay.Show();
+                    return;
                 }
-                else if (role.SelectedIndex == 1)
+                else if (db.Moderator.Where(x => x.Mail == textboxLog.Text && x.Password == textboxPass.Password).Any())
                 {
-                    foreach (Moderator moderator in db.Moderator)
-                    {
-                        if ((textboxLog.Text == moderator.Mail) && (textboxPass.Password == moderator.Password))
-                        {
-                            PrivateAccountModerator glavnay = new PrivateAccountModerator(moderator);
-                            this.Hide();
-                            MessageBox.Show("Вы вошли под учетной записью " + moderator.Mail);
-                            glavnay.Show();
-                            return;
-                        }
-                    }
-                    MessageBox.Show("Логин или пароль указан неверно!");
+                    Moderator moderator = db.Moderator.Where(x => x.Mail == textboxLog.Text && x.Password == textboxPass.Password).First();
+                    PrivateAccountModerator glavnay = new PrivateAccountModerator(moderator);
+                    this.Hide();
+                    MessageBox.Show("Вы вошли под учетной записью " + moderator.Mail);
+                    glavnay.Show();
+                    return;
                 }
-                else if (role.SelectedIndex == 2)
+                else if (db.Administrator.Where(x => x.Mail == textboxLog.Text && x.Password == textboxPass.Password).Any())
                 {
-                    foreach (Administrator administrator in db.Administrator)
-                    {
-                        if ((textboxLog.Text == administrator.Mail) && (textboxPass.Password == administrator.Password))
-                        {
-                            AddCategory glavnay = new AddCategory();
-                            this.Hide();
-                            MessageBox.Show("Вы вошли под учетной записью " + administrator.Mail);
-                            glavnay.Show();
-                            return;
-                        }
-                    }
-                    MessageBox.Show("Логин или пароль указан неверно!");
+                    Administrator administrator = db.Administrator.Where(x => x.Mail == textboxLog.Text && x.Password == textboxPass.Password).First();
+                    AddCategory glavnay = new AddCategory();
+                    this.Hide();
+                    MessageBox.Show("Вы вошли под учетной записью " + administrator.Mail);
+                    glavnay.Show();
+                    return;
                 }
                 else
                 {
-                    MessageBox.Show("Выберите роль!");
+                    MessageBox.Show("Пользователь либо не зарегистрован либо почта/пароль указаны неверно");
                 }
 
             }
-        }
 
-        private void Pass_Checked(object sender, RoutedEventArgs e)
-        {
-            if (Pass.IsChecked == true)
-            {
-            }
         }
     }
 }

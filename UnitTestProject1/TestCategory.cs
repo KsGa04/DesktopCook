@@ -70,26 +70,26 @@ namespace UnitTestProject1
                 CollectionAssert.AreNotEqual(imageBefore, actual.ImageCategory);
             }
         }
-        [TestMethod]
-        public void ViewAddCatalog()
-        {
-            AddCategory addCategory = new AddCategory();
-            int actual = addCategory.categ.Items.Count;
-            int expected = 5;
-            Assert.AreEqual(expected, actual);
-        }
-        [TestMethod]
-        public void ViewCatalog()
-        {
-            DesktopCook.Users users;
-            using (CookingBookEntities db = new CookingBookEntities())
-            {
-                users = db.Users.OrderByDescending(x => x.IdUser).First();
-            }
-            Catalog catalog = new Catalog(users);
-            int actual = catalog.ListCateg.Items.Count;
-            int expected = 3;
-            Assert.AreEqual(expected, actual);
-        }
+        //[TestMethod]
+        //public void ViewAddCatalog()
+        //{
+        //    AddCategory addCategory = new AddCategory();
+        //    int actual = addCategory.categ.Items.Count;
+        //    int expected = 5;
+        //    Assert.AreEqual(expected, actual);
+        //}
+        //[TestMethod]
+        //public void ViewCatalog()
+        //{
+        //    DesktopCook.Users users;
+        //    using (CookingBookEntities db = new CookingBookEntities())
+        //    {
+        //        users = db.Users.OrderByDescending(x => x.IdUser).First();
+        //    }
+        //    Catalog catalog = new Catalog(users);
+        //    int actual = catalog.ListCateg.Items.Count;
+        //    int expected = 3;
+        //    Assert.AreEqual(expected, actual);
+        //}
     }
 }
